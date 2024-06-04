@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SolucionDIESA.CapaPresentacion
+namespace CapaPresentacion
 {
     public partial class Form1 : Form
     {

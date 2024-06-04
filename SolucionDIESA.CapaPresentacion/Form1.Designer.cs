@@ -1,4 +1,4 @@
-﻿namespace SolucionDIESA.CapaPresentacion
+﻿namespace CapaPresentacion
 {
     partial class Form1
     {
