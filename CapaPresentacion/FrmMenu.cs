@@ -12,52 +12,27 @@ namespace CapaPresentacion
 {
     public partial class FrmMenu : Form
     {
-        private int childFormNumber = 0;
-
         public FrmMenu()
         {
             InitializeComponent();
 
-            this.Visible = false;
+            //this.Visible = false;
 
-            var frmLogin = new FrmLogin();
-            if (frmLogin.ShowDialog() == DialogResult.OK)
-            {
-                this.Visible = true;
-                var usuarioActual = frmLogin.GetUsuarioActual;
-            }
-            else this.Close();
-            frmLogin.Dispose();
+            //var frmLogin = new FrmLogin();
+            //if (frmLogin.ShowDialog() == DialogResult.OK)
+            //{
+            //    this.Visible = true;
+            //    var usuarioActual = frmLogin.GetUsuarioActual;
+            //}
+            //else this.Close();
+            //frmLogin.Dispose();
         }
 
-        private void ShowNewForm(object sender, EventArgs e)
+        private void mnuCliente_Click(object sender, EventArgs e)
         {
-            Form childForm = new Form();
-            childForm.MdiParent = this;
-            childForm.Text = "Window " + childFormNumber++;
-            childForm.Show();
-        }
-
-        private void OpenFile(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
-            if (openFileDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                string FileName = openFileDialog.FileName;
-            }
-        }
-
-        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            saveFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
-            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                string FileName = saveFileDialog.FileName;
-            }
+            var form = new FrmCliente();
+            form.MdiParent = this;
+            form.Show();
         }
 
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
@@ -65,54 +40,32 @@ namespace CapaPresentacion
             this.Close();
         }
 
-        private void CutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void mnuProgramarInspeccion_Click(object sender, EventArgs e)
         {
+            var form = new FrmProgramacionInspeccion();
+            form.MdiParent = this;
+            form.Show();
         }
 
-        private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
+        private void mnuConsultaHorarioDisponible_Click(object sender, EventArgs e)
         {
+            var form = new FrmConsultaHorarioDisponiblePorTaller();
+            form.MdiParent = this;
+            form.Show();
         }
 
-        private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void mnuConsultaProgramacionInspeccion_Click(object sender, EventArgs e)
         {
+            var form = new FrmConsultaInspeccionProgramaPorTaller();
+            form.MdiParent = this;
+            form.Show();
         }
 
-        private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void mnuConsultaInspeccion_Click(object sender, EventArgs e)
         {
-            toolStrip.Visible = toolBarToolStripMenuItem.Checked;
-        }
-
-        private void StatusBarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            statusStrip.Visible = statusBarToolStripMenuItem.Checked;
-        }
-
-        private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.Cascade);
-        }
-
-        private void TileVerticalToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.TileVertical);
-        }
-
-        private void TileHorizontalToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.TileHorizontal);
-        }
-
-        private void ArrangeIconsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.ArrangeIcons);
-        }
-
-        private void CloseAllToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            foreach (Form childForm in MdiChildren)
-            {
-                childForm.Close();
-            }
+            var form = new FrmConsultaInspeccionRealizadaPorTaller();
+            form.MdiParent = this;
+            form.Show();
         }
     }
 }
