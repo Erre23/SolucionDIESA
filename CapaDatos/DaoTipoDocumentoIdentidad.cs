@@ -33,16 +33,18 @@ namespace CapaDatos
                     var obj = ReadEntidad(dr);
                     objLista.Add(obj);
                 }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-            finally
-            {
+                dr.Close();
+
                 cmd.Connection.Close();
                 cmd.Dispose();
             }
+            catch (Exception e)
+            {
+                cmd.Connection.Close();
+                cmd.Dispose();
+                throw e;
+            }
+
             return objLista;
         }
 
@@ -63,31 +65,44 @@ namespace CapaDatos
                     var obj = ReadEntidad(dr);
                     objLista.Add(obj);
                 }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-            finally
-            {
+                dr.Close();
+
                 cmd.Connection.Close();
                 cmd.Dispose();
             }
+            catch (Exception e)
+            {
+                cmd.Connection.Close();
+                cmd.Dispose();
+                throw e;
+            }
+
             return objLista;
         }
 
         private TipoDocumentoIdentidad ReadEntidad(SqlDataReader dr)
         {
-            var obj = new TipoDocumentoIdentidad();
-            obj.IdTipoDocumentoIdentidad = Convert.ToInt16(dr["IdTipoDocumentoIdentidad"]);
-            obj.Nombre = dr["Nombre"].ToString();
-            obj.LongitudExacta = Convert.ToBoolean(dr["LongitudExacta"]);
-            obj.LongitudMaxima = Convert.ToInt16(dr["LongitudMaxima"]);
-            obj.LongitudMinima = Convert.ToInt16(dr["LongitudMinima"]);
-            obj.Alfanumerico = Convert.ToBoolean(dr["Alfanumerico"]);
-            obj.Activo = Convert.ToBoolean(dr["Activo"]);
+            try
+            {
 
-            return obj;
+                var obj = new TipoDocumentoIdentidad();
+                obj.IdTipoDocumentoIdentidad = Convert.ToInt16(dr["IdTipoDocumentoIdentidad"]);
+                obj.Nombre = dr["Nombre"].ToString();
+                obj.LongitudExacta = Convert.ToBoolean(dr["LongitudExacta"]);
+                obj.LongitudMaxima = Convert.ToInt16(dr["LongitudMaxima"]);
+                obj.LongitudMinima = Convert.ToInt16(dr["LongitudMinima"]);
+                obj.Alfanumerico = Convert.ToBoolean(dr["Alfanumerico"]);
+                obj.PersonaJuridica = Convert.ToBoolean(dr["PersonaJuridica"]);
+                obj.Activo = Convert.ToBoolean(dr["Activo"]);
+
+                return obj;
+
+            }
+            catch(Exception ex)
+            {
+                dr.Close();
+                throw ex;
+            }
         }
         #endregion metodos
     }

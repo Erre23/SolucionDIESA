@@ -30,7 +30,7 @@ namespace CapaPresentacion
 
         private void mnuCliente_Click(object sender, EventArgs e)
         {
-            var form = new FrmCliente();
+            var form = new FrmCliente((ToolStripMenuItem)sender);
             form.MdiParent = this;
             form.Show();
         }
