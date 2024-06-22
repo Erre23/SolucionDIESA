@@ -33,7 +33,7 @@ namespace CapaPresentacion
             {
                 CmbTipoDocumentoIdentidad.Items.Clear();
                 CmbTipoDocumentoIdentidad.DisplayMember = "Nombre";
-                var tiposDocumentoIdentidad = await LogTipoDocumentoIdentidad.Instancia.TipoDocumentoIdentidaListarActivos();
+                var tiposDocumentoIdentidad = await LogTipoDocumentoIdentidad.Instancia.TipoDocumentoIdentidadListarActivos();
                 foreach (var item in tiposDocumentoIdentidad)
                 {
                     CmbTipoDocumentoIdentidad.Items.Add(item);
@@ -265,7 +265,7 @@ namespace CapaPresentacion
             {
                 BnDeshabilitar.Enabled = false;
                 this.Cursor = Cursors.WaitCursor;
-                await LogCliente.Instancia.ClienteDeshbilitar(cliente.IdCliente);
+                await LogCliente.Instancia.ClienteDeshabilitar(cliente.IdCliente);
                 cliente.Activo = false;
                 DgvCliente_Actualizar(cliente);
 

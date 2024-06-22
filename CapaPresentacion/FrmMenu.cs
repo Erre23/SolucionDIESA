@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaEntidad;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,17 +16,33 @@ namespace CapaPresentacion
         public FrmMenu()
         {
             InitializeComponent();
+        }
 
-            //this.Visible = false;
+        private Usuario _currentUsuario;
 
-            //var frmLogin = new FrmLogin();
-            //if (frmLogin.ShowDialog() == DialogResult.OK)
-            //{
-            //    this.Visible = true;
-            //    var usuarioActual = frmLogin.GetUsuarioActual;
-            //}
-            //else this.Close();
-            //frmLogin.Dispose();
+        private void FrmMenu_Load(object sender, EventArgs e)
+        {
+            this.Visible = false;
+
+            var frmLogin = new FrmLogin();
+            if (frmLogin.ShowDialog() == DialogResult.OK)
+            {
+                this.Visible = true;
+                this._currentUsuario = frmLogin.GetUsuarioActual;
+                frmLogin.Dispose();
+            }
+            else
+            {
+                frmLogin.Dispose();
+                this.Close();
+            }
+        }
+
+        private void mnuTipoDocumentoIdentidad_Click(object sender, EventArgs e)
+        {
+            var form = new FrmTipoDocumentoIdentidad((ToolStripMenuItem)sender);
+            form.MdiParent = this;
+            form.Show();
         }
 
         private void mnuCliente_Click(object sender, EventArgs e)

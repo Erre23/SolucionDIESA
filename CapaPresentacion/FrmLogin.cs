@@ -1,5 +1,6 @@
 ﻿using CapaEntidad;
 using CapaLogica;
+using CapaPresentacion.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,7 +29,7 @@ namespace CapaPresentacion
             {
                 CmbTipoDocumentoIdentidad.Items.Clear();
                 CmbTipoDocumentoIdentidad.DisplayMember = "Nombre";
-                var tiposDocumentoIdentidad = await LogTipoDocumentoIdentidad.Instancia.TipoDocumentoIdentidaListarActivos();
+                var tiposDocumentoIdentidad = await LogTipoDocumentoIdentidad.Instancia.TipoDocumentoIdentidadListarActivos();
                 foreach (var item in tiposDocumentoIdentidad)
                 {
                     if (!item.PersonaJuridica) CmbTipoDocumentoIdentidad.Items.Add(item);
@@ -57,14 +58,14 @@ namespace CapaPresentacion
 
         private void CmbTipoDocumentoIdentidad_SelectedValueChanged(object sender, EventArgs e)
         {
-            TbNumeroDocumentoIdentidad.Clear();
+            TbDocumentoIdentidadNumero.Clear();
             var tipoDocumentoIdentidad = (TipoDocumentoIdentidad)CmbTipoDocumentoIdentidad.SelectedItem;
-            TbNumeroDocumentoIdentidad.MaxLength = tipoDocumentoIdentidad.LongitudMaxima;
+            TbDocumentoIdentidadNumero.MaxLength = tipoDocumentoIdentidad.LongitudMaxima;
         }
 
         private void TbNumeroDocumentoIdentidad_TextChanged(object sender, EventArgs e)
         {
-            TbNumeroDocumentoIdentidad.Tag = null;
+            TbDocumentoIdentidadNumero.Tag = null;
             TbApellidosNombres.Clear();
             TbContrasena.Clear();
             TbContrasena.Enabled = false;
@@ -81,19 +82,19 @@ namespace CapaPresentacion
                     return;
                 }
 
-                if (tipoDocumentoIdentidad.LongitudMinima != TbNumeroDocumentoIdentidad.Text.Length)
+                if (tipoDocumentoIdentidad.LongitudMinima != TbDocumentoIdentidadNumero.Text.Length)
                 {
                     MessageBox.Show(this, $"El número de documento de identidad debe tener mínimo {tipoDocumentoIdentidad.LongitudMinima} caracteres", "Un momento por favor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
 
-                if (string.IsNullOrEmpty(TbNumeroDocumentoIdentidad.Text.Trim()))
+                if (string.IsNullOrEmpty(TbDocumentoIdentidadNumero.Text.Trim()))
                 {
                     MessageBox.Show(this, "Ingrese un número de documento de identidad", "Un momento por favor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
 
-                var usuario = await LogUsuario.Instancia.UsuarioBuscarPorDocumentoIdentidad(tipoDocumentoIdentidad.IdTipoDocumentoIdentidad, TbNumeroDocumentoIdentidad.Text);
+                var usuario = await LogUsuario.Instancia.UsuarioBuscarPorDocumentoIdentidad(tipoDocumentoIdentidad.IdTipoDocumentoIdentidad, TbDocumentoIdentidadNumero.Text);
 
                 if (usuario == null)
                 {
@@ -101,7 +102,7 @@ namespace CapaPresentacion
                     return;
                 }
 
-                TbNumeroDocumentoIdentidad.Tag = usuario;
+                TbDocumentoIdentidadNumero.Tag = usuario;
                 TbApellidosNombres.Text = usuario.ApellidosNombres;
                 TbContrasena.Enabled = true;
                 TbContrasena.Focus();
@@ -116,7 +117,7 @@ namespace CapaPresentacion
         {
             try
             {
-                var usuario = (Usuario)TbNumeroDocumentoIdentidad.Tag;
+                var usuario = (Usuario)TbDocumentoIdentidadNumero.Tag;
                 if (usuario == null)
                 {
                     MessageBox.Show(this, "Olvidó ingresar un usuario", "Un momento por favor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -162,6 +163,22 @@ namespace CapaPresentacion
         private void BnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void CmbTipoDocumentoIdentidad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var tipoDocumentoIdentidad = (TipoDocumentoIdentidad)CmbTipoDocumentoIdentidad.SelectedItem;
+            if (tipoDocumentoIdentidad == null)
+            {
+                TbDocumentoIdentidadNumero.MaxLength = 0;
+                TbDocumentoIdentidadNumero.TipoCaracteres = CustomTextBox.TipoInput.Todo;
+            }
+            else
+            {
+                TbDocumentoIdentidadNumero.MaxLength = tipoDocumentoIdentidad.LongitudMaxima;
+                TbDocumentoIdentidadNumero.TipoCaracteres = tipoDocumentoIdentidad.Alfanumerico ? CustomTextBox.TipoInput.NumerosYLetras : CustomTextBox.TipoInput.SoloNumeros;
+            }
+            TbDocumentoIdentidadNumero.Clear();
         }
     }
 }

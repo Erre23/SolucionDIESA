@@ -15,7 +15,112 @@ namespace CapaDatos
         #endregion singleton
 
 
-        #region metodos        
+        #region metodos    
+        public async Task<short> Insertar(TipoDocumentoIdentidad tipoDocumentoIdentidad)
+        {
+            var cmd = (SqlCommand)null;
+            SqlConnection cnn = Conexion.Instancia.Conectar();
+            await cnn.OpenAsync();
+            using (var tran = cnn.BeginTransaction())
+            {
+                try
+                {
+                    cmd = new SqlCommand("spTipoDocumentoIdentidadInsertar", cnn, tran);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add(CreateParams.NVarchar("Nombre", tipoDocumentoIdentidad.Nombre, 50));
+                    cmd.Parameters.Add(CreateParams.Bit("LongitudExacta", tipoDocumentoIdentidad.LongitudExacta));
+                    cmd.Parameters.Add(CreateParams.TinyInt("LongitudMinima", tipoDocumentoIdentidad.LongitudMinima));
+                    cmd.Parameters.Add(CreateParams.TinyInt("LongitudMaxima", tipoDocumentoIdentidad.LongitudMaxima));
+                    cmd.Parameters.Add(CreateParams.Bit("Alfanumerico", tipoDocumentoIdentidad.Alfanumerico));
+                    cmd.Parameters.Add(CreateParams.Bit("PersonaJuridica", tipoDocumentoIdentidad.PersonaJuridica));
+
+                    tipoDocumentoIdentidad.IdTipoDocumentoIdentidad = Convert.ToInt16(await cmd.ExecuteScalarAsync());
+
+                    tran.Commit();
+                    cmd.Connection.Close();
+                    cmd.Dispose();
+                }
+                catch (Exception e)
+                {
+                    tran.Rollback();
+                    cmd.Connection.Close();
+                    cmd.Dispose();
+                    throw e;
+                }
+            }
+
+            return tipoDocumentoIdentidad.IdTipoDocumentoIdentidad;
+        }
+
+
+        public async Task Actualizar(TipoDocumentoIdentidad tipoDocumentoIdentidad)
+        {
+            var cmd = (SqlCommand)null;
+            SqlConnection cnn = Conexion.Instancia.Conectar();
+            await cnn.OpenAsync();
+            using (var tran = cnn.BeginTransaction())
+            {
+                try
+                {
+                    cmd = new SqlCommand("spTipoDocumentoIdentidadActualizar", cnn, tran);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add(CreateParams.TinyInt("IdTipoDocumentoIdentidad", tipoDocumentoIdentidad.IdTipoDocumentoIdentidad));
+                    cmd.Parameters.Add(CreateParams.NVarchar("Nombre", tipoDocumentoIdentidad.Nombre, 50));
+                    cmd.Parameters.Add(CreateParams.Bit("LongitudExacta", tipoDocumentoIdentidad.LongitudExacta));
+                    cmd.Parameters.Add(CreateParams.TinyInt("LongitudMinima", tipoDocumentoIdentidad.LongitudMinima));
+                    cmd.Parameters.Add(CreateParams.TinyInt("LongitudMaxima", tipoDocumentoIdentidad.LongitudMaxima));
+                    cmd.Parameters.Add(CreateParams.Bit("Alfanumerico", tipoDocumentoIdentidad.Alfanumerico));
+                    cmd.Parameters.Add(CreateParams.Bit("PersonaJuridica", tipoDocumentoIdentidad.PersonaJuridica));
+
+                    cmd.ExecuteNonQuery();
+
+                    tran.Commit();
+                    cmd.Connection.Close();
+                    cmd.Dispose();
+                }
+                catch (Exception e)
+                {
+                    tran.Rollback();
+                    cmd.Connection.Close();
+                    cmd.Dispose();
+                    throw e;
+                }
+            }
+        }
+
+
+        public async Task Deshabilitar(int idTipoDocumentoIdentidad)
+        {
+            var cmd = (SqlCommand)null;
+            SqlConnection cnn = Conexion.Instancia.Conectar();
+            await cnn.OpenAsync();
+            using (var tran = cnn.BeginTransaction())
+            {
+                try
+                {
+                    cmd = new SqlCommand("spTipoDocumentoIdentidadDeshabilitar", cnn, tran);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add(CreateParams.Int("IdTipoDocumentoIdentidad", idTipoDocumentoIdentidad));
+
+                    cmd.ExecuteNonQuery();
+
+                    tran.Commit();
+                    cmd.Connection.Close();
+                    cmd.Dispose();
+                }
+                catch (Exception e)
+                {
+                    tran.Rollback();
+                    cmd.Connection.Close();
+                    cmd.Dispose();
+                    throw e;
+                }
+            }
+        }
+
         public async Task<List<TipoDocumentoIdentidad>> ListarActivos()
         {
             var cmd = (SqlCommand)null;
