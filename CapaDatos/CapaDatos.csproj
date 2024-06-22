@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Conexion.cs" />
     <Compile Include="CreateParams.cs" />
+    <Compile Include="DaoCliente.cs" />
     <Compile Include="DaoTipoDocumentoIdentidad.cs" />
     <Compile Include="DaoUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

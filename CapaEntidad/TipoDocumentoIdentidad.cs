@@ -14,6 +14,8 @@
 
         public bool Alfanumerico { get; set; }
 
-        public bool Activo { get; set; }
+        public bool PersonaJuridica { get; set; } = false;
+
+        public bool Activo { get; set; } = true;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using CapaEntidad;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -62,36 +63,44 @@ namespace CapaDatos
 
         public async Task<int> Insertar(Usuario usuario)
         {
+
             usuario.HashContrasena = Encriptar(usuario.HashContrasena);
             var cmd = (SqlCommand)null;
-            var objLista = new List<TipoDocumentoIdentidad>();
-            try
-            {
-                SqlConnection cnn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("spUsuarioInsertar", cnn);
-                cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.Add(CreateParams.TinyInt("IdTipoDocumentoIdentidad", usuario.IdTipoDocumentoIdentidad));
-                cmd.Parameters.Add(CreateParams.NVarchar("NumeroDocumentoIdentidad", usuario.NumeroDocumentoIdentidad, 20));
-                cmd.Parameters.Add(CreateParams.NVarchar("Nombres", usuario.Nombres, 100));
-                cmd.Parameters.Add(CreateParams.NVarchar("Apellido1", usuario.Apellido1, 50));
-                cmd.Parameters.Add(CreateParams.NVarchar("Apellido2", usuario.Apellido2, 50));
-                cmd.Parameters.Add(CreateParams.NVarchar("HashContrasena", usuario.HashContrasena, -1));
-                cmd.Parameters.Add(CreateParams.Bit("CambioContrasena", usuario.CambioContrasena));
-                cmd.Parameters.Add(CreateParams.Bit("Activo", usuario.Activo));
-
-                await cnn.OpenAsync();
-
-                usuario.IdUsuario = (int)await cmd.ExecuteScalarAsync();
-            }
-            catch (Exception e)
+            SqlConnection cnn = Conexion.Instancia.Conectar();
+            await cnn.OpenAsync();
+            using (var tran = cnn.BeginTransaction())
             {
-                throw e;
-            }
-            finally
-            {
-                cmd.Connection.Close();
-                cmd.Dispose();
+                try
+                {
+                    cmd = new SqlCommand("spUsuarioInsertar", cnn, tran);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add(CreateParams.TinyInt("IdTipoDocumentoIdentidad", usuario.IdTipoDocumentoIdentidad));
+                    cmd.Parameters.Add(CreateParams.NVarchar("NumeroDocumentoIdentidad", usuario.NumeroDocumentoIdentidad, 20));
+                    cmd.Parameters.Add(CreateParams.NVarchar("Nombres", usuario.Nombres, 100));
+                    cmd.Parameters.Add(CreateParams.NVarchar("Apellido1", usuario.Apellido1, 50));
+                    cmd.Parameters.Add(CreateParams.NVarchar("Apellido2", usuario.Apellido2, 50));
+                    cmd.Parameters.Add(CreateParams.NVarchar("HashContrasena", usuario.HashContrasena, -1));
+                    cmd.Parameters.Add(CreateParams.Bit("CambioContrasena", usuario.CambioContrasena));
+                    cmd.Parameters.Add(CreateParams.Bit("Activo", usuario.Activo));                    
+
+                    usuario.IdUsuario = Convert.ToInt32(await cmd.ExecuteScalarAsync());
+                    tran.Commit();
+                }
+                catch (Exception e)
+                {
+                    tran.Rollback();
+                    cmd.Connection.Close();
+                    cmd.Dispose();
+                    throw e;
+                }
+                finally
+                {                    
+                    cmd.Connection.Close();
+                    cmd.Dispose();
+                }
+
             }
 
             return usuario.IdUsuario;
@@ -115,6 +124,8 @@ namespace CapaDatos
                 {
                     usuario = ReadEntidad(dr, true);
                 }
+
+                dr.Close();
 
                 /* Si las contraseñas no coinciden retornamos el usuario null */
                 if (!VerificarContrasena(usuario.HashContrasena, contrasena)) usuario = null;
@@ -151,6 +162,7 @@ namespace CapaDatos
                 {
                     usuario = ReadEntidad(dr);
                 }
+                dr.Close();
             }
             catch (Exception e)
             {
@@ -167,18 +179,27 @@ namespace CapaDatos
 
         private Usuario ReadEntidad(SqlDataReader dr, bool traerContraseña = false)
         {
-            var obj = new Usuario();
-            obj.IdUsuario = Convert.ToInt32(dr["IdUsuario"]);
-            obj.IdTipoDocumentoIdentidad = Convert.ToInt16(dr["IdTipoDocumentoIdentidad"]);
-            obj.NumeroDocumentoIdentidad = dr["NumeroDocumentoIdentidad"].ToString();
-            obj.Nombres = dr["Nombres"].ToString();
-            obj.Apellido1 = dr["Apellido1"].ToString();
-            obj.Apellido2 = dr["Apellido2"].ToString();
-            obj.CambioContrasena = Convert.ToBoolean(dr["CambioContrasena"]);
-            obj.Activo = Convert.ToBoolean(dr["Activo"]);
-            if (traerContraseña) obj.HashContrasena = dr["HashContrasena"].ToString();
+            try
+            {
 
-            return obj;
+                var obj = new Usuario();
+                obj.IdUsuario = Convert.ToInt32(dr["IdUsuario"]);
+                obj.IdTipoDocumentoIdentidad = Convert.ToInt16(dr["IdTipoDocumentoIdentidad"]);
+                obj.NumeroDocumentoIdentidad = dr["NumeroDocumentoIdentidad"].ToString();
+                obj.Nombres = dr["Nombres"].ToString();
+                obj.Apellido1 = dr["Apellido1"].ToString();
+                obj.Apellido2 = dr["Apellido2"].ToString();
+                obj.CambioContrasena = Convert.ToBoolean(dr["CambioContrasena"]);
+                obj.Activo = Convert.ToBoolean(dr["Activo"]);
+                if (traerContraseña) obj.HashContrasena = dr["HashContrasena"].ToString();
+
+                return obj;
+            }
+            catch(Exception ex)
+            {
+                dr.Close();
+                throw ex;
+            }
         }
         #endregion métodos
     }

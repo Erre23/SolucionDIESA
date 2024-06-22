@@ -31,7 +31,7 @@ namespace CapaPresentacion
                 var tiposDocumentoIdentidad = await LogTipoDocumentoIdentidad.Instancia.TipoDocumentoIdentidaListarActivos();
                 foreach (var item in tiposDocumentoIdentidad)
                 {
-                    CmbTipoDocumentoIdentidad.Items.Add(item);
+                    if (!item.PersonaJuridica) CmbTipoDocumentoIdentidad.Items.Add(item);
                 }
 
                 if (CmbTipoDocumentoIdentidad.Items.Count > 0) CmbTipoDocumentoIdentidad.SelectedIndex = 0;
