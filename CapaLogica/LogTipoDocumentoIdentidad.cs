@@ -16,10 +16,30 @@ namespace CapaLogica
         #endregion singleton
 
         #region metodos
+        public async Task<short> TipoDocumentoIdentidadInsertar(TipoDocumentoIdentidad tipoDocumentoIdentidad)
+        {
+            return await DaoTipoDocumentoIdentidad.Instancia.Insertar(tipoDocumentoIdentidad);
+        }
+
+        public async Task TipoDocumentoIdentidadActualizar(TipoDocumentoIdentidad tipoDocumentoIdentidad)
+        {
+            await DaoTipoDocumentoIdentidad.Instancia.Actualizar(tipoDocumentoIdentidad);
+        }
+
+        public async Task TipoDocumentoIdentidadDeshabilitar(short idTipoDocumentoIdentidad)
+        {
+            await DaoTipoDocumentoIdentidad.Instancia.Deshabilitar(idTipoDocumentoIdentidad);
+        }
+
         ///listado
-        public async Task<List<TipoDocumentoIdentidad>> TipoDocumentoIdentidaListarActivos()
+        public async Task<List<TipoDocumentoIdentidad>> TipoDocumentoIdentidadListarActivos()
         {
             return await DaoTipoDocumentoIdentidad.Instancia.ListarActivos();
+        }
+
+        public async Task<List<TipoDocumentoIdentidad>> TipoDocumentoIdentidadListarTodos()
+        {
+            return await DaoTipoDocumentoIdentidad.Instancia.ListarTodos();
         }
 
         #endregion metodos

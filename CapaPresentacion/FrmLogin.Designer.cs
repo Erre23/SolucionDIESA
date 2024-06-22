@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.CmbTipoDocumentoIdentidad = new System.Windows.Forms.ComboBox();
-            this.TbNumeroDocumentoIdentidad = new System.Windows.Forms.TextBox();
+            this.TbDocumentoIdentidadNumero = new Controls.CustomTextBox();
             this.BnBuscar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.TbApellidosNombres = new System.Windows.Forms.TextBox();
@@ -68,15 +68,16 @@
             this.CmbTipoDocumentoIdentidad.Name = "CmbTipoDocumentoIdentidad";
             this.CmbTipoDocumentoIdentidad.Size = new System.Drawing.Size(242, 29);
             this.CmbTipoDocumentoIdentidad.TabIndex = 2;
+            this.CmbTipoDocumentoIdentidad.SelectedIndexChanged += new System.EventHandler(this.CmbTipoDocumentoIdentidad_SelectedIndexChanged);
             this.CmbTipoDocumentoIdentidad.SelectedValueChanged += new System.EventHandler(this.CmbTipoDocumentoIdentidad_SelectedValueChanged);
             // 
-            // TbNumeroDocumentoIdentidad
+            // TbDocumentoIdentidadNumero
             // 
-            this.TbNumeroDocumentoIdentidad.Location = new System.Drawing.Point(188, 96);
-            this.TbNumeroDocumentoIdentidad.Name = "TbNumeroDocumentoIdentidad";
-            this.TbNumeroDocumentoIdentidad.Size = new System.Drawing.Size(242, 28);
-            this.TbNumeroDocumentoIdentidad.TabIndex = 3;
-            this.TbNumeroDocumentoIdentidad.TextChanged += new System.EventHandler(this.TbNumeroDocumentoIdentidad_TextChanged);
+            this.TbDocumentoIdentidadNumero.Location = new System.Drawing.Point(188, 96);
+            this.TbDocumentoIdentidadNumero.Name = "TbDocumentoIdentidadNumero";
+            this.TbDocumentoIdentidadNumero.Size = new System.Drawing.Size(242, 28);
+            this.TbDocumentoIdentidadNumero.TabIndex = 3;
+            this.TbDocumentoIdentidadNumero.TextChanged += new System.EventHandler(this.TbNumeroDocumentoIdentidad_TextChanged);
             // 
             // BnBuscar
             // 
@@ -169,7 +170,7 @@
             this.Controls.Add(this.TbApellidosNombres);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.BnBuscar);
-            this.Controls.Add(this.TbNumeroDocumentoIdentidad);
+            this.Controls.Add(this.TbDocumentoIdentidadNumero);
             this.Controls.Add(this.CmbTipoDocumentoIdentidad);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -192,7 +193,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox CmbTipoDocumentoIdentidad;
-        private System.Windows.Forms.TextBox TbNumeroDocumentoIdentidad;
+        private Controls.CustomTextBox TbDocumentoIdentidadNumero;
         private System.Windows.Forms.Button BnBuscar;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox TbApellidosNombres;

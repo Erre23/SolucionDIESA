@@ -23,10 +23,17 @@ namespace CapaPresentacion.Controls
         {
             base.OnKeyPress(e);
 
-            if (TipoCaracteres == TipoInput.SoloNumeros && !char.IsDigit(e.KeyChar))
-                e.Handled = true;
-            else if (TipoCaracteres == TipoInput.NumerosYLetras && !char.IsLetterOrDigit(e.KeyChar))
-                e.Handled = true;
+            if (!char.IsControl(e.KeyChar))
+            {
+                if (TipoCaracteres == TipoInput.SoloNumeros && !char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+                else if (TipoCaracteres == TipoInput.NumerosYLetras && !char.IsLetterOrDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+            }
         }
     }
 }

@@ -24,7 +24,7 @@ namespace CapaLogica
             await DaoCliente.Instancia.Actualizar(cliente);
         }
 
-        public async Task ClienteDeshbilitar(int idCliente)
+        public async Task ClienteDeshabilitar(int idCliente)
         {
             await DaoCliente.Instancia.Deshabilitar(idCliente);
         }

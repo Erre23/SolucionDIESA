@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.mnuMantenedor = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuTipoDocumentoIdentidad = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCliente = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,6 +64,7 @@
             // mnuMantenedor
             // 
             this.mnuMantenedor.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuTipoDocumentoIdentidad,
             this.mnuCliente,
             this.toolStripSeparator5,
             this.mnuExit});
@@ -71,22 +73,29 @@
             this.mnuMantenedor.Size = new System.Drawing.Size(118, 24);
             this.mnuMantenedor.Text = "Mantenedores";
             // 
+            // mnuTipoDocumentoIdentidad
+            // 
+            this.mnuTipoDocumentoIdentidad.Name = "mnuTipoDocumentoIdentidad";
+            this.mnuTipoDocumentoIdentidad.Size = new System.Drawing.Size(314, 26);
+            this.mnuTipoDocumentoIdentidad.Text = "Tipo de Documento de Identidad";
+            this.mnuTipoDocumentoIdentidad.Click += new System.EventHandler(this.mnuTipoDocumentoIdentidad_Click);
+            // 
             // mnuCliente
             // 
             this.mnuCliente.Name = "mnuCliente";
-            this.mnuCliente.Size = new System.Drawing.Size(138, 26);
+            this.mnuCliente.Size = new System.Drawing.Size(314, 26);
             this.mnuCliente.Text = "Cliente";
             this.mnuCliente.Click += new System.EventHandler(this.mnuCliente_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(135, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(311, 6);
             // 
             // mnuExit
             // 
             this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(138, 26);
+            this.mnuExit.Size = new System.Drawing.Size(314, 26);
             this.mnuExit.Text = "Exit";
             this.mnuExit.Click += new System.EventHandler(this.ExitToolsStripMenuItem_Click);
             // 
@@ -169,6 +178,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Solución DIESA";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FrmMenu_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.statusStrip.ResumeLayout(false);
@@ -194,6 +204,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuConsultaHorarioDIsponible;
         private System.Windows.Forms.ToolStripMenuItem mnuConsultaProgramacionInspeccion;
         private System.Windows.Forms.ToolStripMenuItem mnuConsultaInspeccion;
+        private System.Windows.Forms.ToolStripMenuItem mnuTipoDocumentoIdentidad;
     }
 }
 
