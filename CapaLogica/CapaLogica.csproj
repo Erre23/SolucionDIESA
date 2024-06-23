@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LogTaller.cs" />
+    <Compile Include="LogDepartamento.cs" />
     <Compile Include="LogTipoDocumentoIdentidad.cs" />
     <Compile Include="LogCliente.cs" />
     <Compile Include="LogUsuario.cs" />

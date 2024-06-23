@@ -296,7 +296,7 @@ namespace CapaPresentacion
                 var datosFaltantes = "";
                 var tipoDocumentoIdentidad = (TipoDocumentoIdentidad)CmbTipoDocumentoIdentidad.SelectedItem;
 
-                if (TbDocumentoIdentidadNumero.Text.Trim() == "") datosFaltantes += "\n\r - Nª de documento de identidad";
+                if (TbDocumentoIdentidadNumero.Text.Trim() == "") datosFaltantes += "\n\r - Nº de documento de identidad";
                 if (tipoDocumentoIdentidad.PersonaJuridica)
                 {
                     if (TbRazonSocial.Text.Trim() == "") datosFaltantes += "\n\r - Razón Social";

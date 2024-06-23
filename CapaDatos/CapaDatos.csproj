@@ -51,6 +51,10 @@
   <ItemGroup>
     <Compile Include="Conexion.cs" />
     <Compile Include="CreateParams.cs" />
+    <Compile Include="DaoTaller.cs" />
+    <Compile Include="DaoDepartamento.cs" />
+    <Compile Include="DaoProvincia.cs" />
+    <Compile Include="DaoDistrito.cs" />
     <Compile Include="DaoCliente.cs" />
     <Compile Include="DaoTipoDocumentoIdentidad.cs" />
     <Compile Include="DaoUsuario.cs" />
