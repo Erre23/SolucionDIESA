@@ -38,6 +38,13 @@ namespace CapaPresentacion
             }
         }
 
+        private void mnuTaller_Click(object sender, EventArgs e)
+        {
+            var form = new FrmTaller((ToolStripMenuItem)sender);
+            form.MdiParent = this;
+            form.Show();
+        }
+
         private void mnuTipoDocumentoIdentidad_Click(object sender, EventArgs e)
         {
             var form = new FrmTipoDocumentoIdentidad((ToolStripMenuItem)sender);

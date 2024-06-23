@@ -44,6 +44,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.mnuTaller = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -64,6 +65,7 @@
             // mnuMantenedor
             // 
             this.mnuMantenedor.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuTaller,
             this.mnuTipoDocumentoIdentidad,
             this.mnuCliente,
             this.toolStripSeparator5,
@@ -164,6 +166,13 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(49, 20);
             this.toolStripStatusLabel.Text = "Status";
             // 
+            // mnuTaller
+            // 
+            this.mnuTaller.Name = "mnuTaller";
+            this.mnuTaller.Size = new System.Drawing.Size(314, 26);
+            this.mnuTaller.Text = "Taller";
+            this.mnuTaller.Click += new System.EventHandler(this.mnuTaller_Click);
+            // 
             // FrmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -205,6 +214,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuConsultaProgramacionInspeccion;
         private System.Windows.Forms.ToolStripMenuItem mnuConsultaInspeccion;
         private System.Windows.Forms.ToolStripMenuItem mnuTipoDocumentoIdentidad;
+        private System.Windows.Forms.ToolStripMenuItem mnuTaller;
     }
 }
 
