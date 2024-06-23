@@ -13,6 +13,7 @@ namespace CapaPresentacion
 {
     public partial class FrmMenu : Form
     {
+        Form formInspector;
         public FrmMenu()
         {
             InitializeComponent();
@@ -90,6 +91,20 @@ namespace CapaPresentacion
             var form = new FrmConsultaInspeccionRealizadaPorTaller();
             form.MdiParent = this;
             form.Show();
+        }
+
+        private void inspectorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (formInspector == null || formInspector.IsDisposed)
+            {
+                formInspector = new Frm_Inspector();
+                formInspector.MdiParent = this;
+                formInspector.Show();
+            }
+            else
+            {
+                formInspector.Activate();
+            }
         }
     }
 }
