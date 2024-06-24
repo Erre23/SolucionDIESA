@@ -46,7 +46,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.tipoDeInspeccionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.metodoPagoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -72,8 +72,8 @@
             this.mnuTipoDocumentoIdentidad,
             this.mnuCliente,
             this.inspectorToolStripMenuItem,
+            this.metodoPagoToolStripMenuItem,
             this.toolStripSeparator5,
-            this.tipoDeInspeccionToolStripMenuItem,
             this.mnuExit});
             this.mnuMantenedor.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder;
             this.mnuMantenedor.Name = "mnuMantenedor";
@@ -184,12 +184,12 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
-            // tipoDeInspeccionToolStripMenuItem
+            // metodoPagoToolStripMenuItem
             // 
-            this.tipoDeInspeccionToolStripMenuItem.Name = "tipoDeInspeccionToolStripMenuItem";
-            this.tipoDeInspeccionToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
-            this.tipoDeInspeccionToolStripMenuItem.Text = "Tipo de Inspeccion";
-            this.tipoDeInspeccionToolStripMenuItem.Click += new System.EventHandler(this.tipoDeInspeccionToolStripMenuItem_Click);
+            this.metodoPagoToolStripMenuItem.Name = "metodoPagoToolStripMenuItem";
+            this.metodoPagoToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.metodoPagoToolStripMenuItem.Text = "MetodoPago";
+            this.metodoPagoToolStripMenuItem.Click += new System.EventHandler(this.metodoPagoToolStripMenuItem_Click);
             // 
             // FrmMenu
             // 
@@ -233,7 +233,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuTipoDocumentoIdentidad;
         private System.Windows.Forms.ToolStripMenuItem mnuTaller;
         private System.Windows.Forms.ToolStripMenuItem inspectorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tipoDeInspeccionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem metodoPagoToolStripMenuItem;
     }
 }
 

@@ -49,8 +49,6 @@
             this.txt_NombreInsp = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
             this.btn_Refrescar = new System.Windows.Forms.Button();
             this.btn_Buscar = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
@@ -63,8 +61,8 @@
             this.btn_Editar = new System.Windows.Forms.Button();
             this.btn_Nuevo = new System.Windows.Forms.Button();
             this.txt_Buscar = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBoxDatos.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvInspector)).BeginInit();
             this.SuspendLayout();
@@ -303,28 +301,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Tipo Doc.Ident:";
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.DodgerBlue;
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1116, 42);
-            this.panel1.TabIndex = 1;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(384, 9);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(218, 25);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Mantenedor Inspector";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // btn_Refrescar
             // 
             this.btn_Refrescar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -491,11 +467,25 @@
             this.txt_Buscar.Size = new System.Drawing.Size(492, 23);
             this.txt_Buscar.TabIndex = 26;
             // 
+            // label8
+            // 
+            this.label8.BackColor = System.Drawing.SystemColors.Highlight;
+            this.label8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label8.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(0, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(1116, 35);
+            this.label8.TabIndex = 27;
+            this.label8.Text = "Mantenedor Inspector";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Frm_Inspector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1116, 629);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.txt_Buscar);
             this.Controls.Add(this.btn_Refrescar);
             this.Controls.Add(this.btn_Editar);
@@ -507,7 +497,6 @@
             this.Controls.Add(this.btn_Agregar);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.btn_Buscar);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBoxDatos);
             this.Name = "Frm_Inspector";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
@@ -516,8 +505,6 @@
             this.Load += new System.EventHandler(this.FORM2_Load);
             this.groupBoxDatos.ResumeLayout(false);
             this.groupBoxDatos.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DgvInspector)).EndInit();
             this.ResumeLayout(false);
@@ -538,8 +525,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txt_NombreInsp;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btn_Buscar;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txt_NumEmpleado;
@@ -562,5 +547,6 @@
         private System.Windows.Forms.ComboBox cmb_Estado;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txt_Buscar;
+        private System.Windows.Forms.Label label8;
     }
 }

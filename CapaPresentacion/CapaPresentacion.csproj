@@ -50,6 +50,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="FormAccion.cs" />
+    <Compile Include="FrmMetododePago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMetododePago.Designer.cs">
+      <DependentUpon>FrmMetododePago.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmInspector.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,14 +116,11 @@
     <Compile Include="FrmMenu.Designer.cs">
       <DependentUpon>FrmMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmTipoInspeccion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmTipoInspeccion.Designer.cs">
-      <DependentUpon>FrmTipoInspeccion.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmMetododePago.resx">
+      <DependentUpon>FrmMetododePago.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmInspector.resx">
       <DependentUpon>FrmInspector.cs</DependentUpon>
     </EmbeddedResource>
@@ -147,9 +150,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMenu.resx">
       <DependentUpon>FrmMenu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmTipoInspeccion.resx">
-      <DependentUpon>FrmTipoInspeccion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
