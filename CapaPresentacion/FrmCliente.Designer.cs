@@ -29,31 +29,24 @@
         private void InitializeComponent()
         {
             this.GbDatos = new System.Windows.Forms.GroupBox();
-            this.TbDocumentoIdentidadNumero = new CapaPresentacion.Controls.CustomTextBox();
             this.TbEmail = new System.Windows.Forms.TextBox();
             this.TbCelular = new System.Windows.Forms.TextBox();
             this.LbEmail = new System.Windows.Forms.Label();
             this.LbCelular = new System.Windows.Forms.Label();
+            this.TbRazonSocial = new System.Windows.Forms.TextBox();
             this.TbApellido2 = new System.Windows.Forms.TextBox();
             this.TbApellido1 = new System.Windows.Forms.TextBox();
             this.TbNombres = new System.Windows.Forms.TextBox();
             this.CmbTipoDocumentoIdentidad = new System.Windows.Forms.ComboBox();
+            this.LbRazonSocial = new System.Windows.Forms.Label();
             this.LbApellido2 = new System.Windows.Forms.Label();
             this.LbApellido1 = new System.Windows.Forms.Label();
             this.LbNombres = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.TbRazonSocial = new System.Windows.Forms.TextBox();
-            this.LbRazonSocial = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.GbLista = new System.Windows.Forms.GroupBox();
             this.DgvCliente = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LbOpcion = new System.Windows.Forms.Label();
             this.BnGuardar = new System.Windows.Forms.Button();
             this.BnCancelar = new System.Windows.Forms.Button();
@@ -63,6 +56,13 @@
             this.BnBuscar = new System.Windows.Forms.Button();
             this.BnSalir = new System.Windows.Forms.Button();
             this.BnFiltrar = new System.Windows.Forms.Button();
+            this.TbDocumentoIdentidadNumero = new CapaPresentacion.Controls.CustomTextBox();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GbDatos.SuspendLayout();
             this.GbLista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvCliente)).BeginInit();
@@ -93,20 +93,12 @@
             this.GbDatos.TabStop = false;
             this.GbDatos.Text = "Datos del Cliente";
             // 
-            // TbDocumentoIdentidadNumero
-            // 
-            this.TbDocumentoIdentidadNumero.Location = new System.Drawing.Point(547, 34);
-            this.TbDocumentoIdentidadNumero.Name = "TbDocumentoIdentidadNumero";
-            this.TbDocumentoIdentidadNumero.Size = new System.Drawing.Size(228, 24);
-            this.TbDocumentoIdentidadNumero.TabIndex = 3;
-            this.TbDocumentoIdentidadNumero.TipoCaracteres = CapaPresentacion.Controls.CustomTextBox.TipoInput.Todo;
-            // 
             // TbEmail
             // 
             this.TbEmail.Location = new System.Drawing.Point(547, 140);
             this.TbEmail.MaxLength = 100;
             this.TbEmail.Name = "TbEmail";
-            this.TbEmail.Size = new System.Drawing.Size(228, 24);
+            this.TbEmail.Size = new System.Drawing.Size(228, 28);
             this.TbEmail.TabIndex = 15;
             // 
             // TbCelular
@@ -114,7 +106,7 @@
             this.TbCelular.Location = new System.Drawing.Point(153, 140);
             this.TbCelular.MaxLength = 50;
             this.TbCelular.Name = "TbCelular";
-            this.TbCelular.Size = new System.Drawing.Size(228, 24);
+            this.TbCelular.Size = new System.Drawing.Size(228, 28);
             this.TbCelular.TabIndex = 13;
             // 
             // LbEmail
@@ -122,7 +114,7 @@
             this.LbEmail.AutoSize = true;
             this.LbEmail.Location = new System.Drawing.Point(479, 143);
             this.LbEmail.Name = "LbEmail";
-            this.LbEmail.Size = new System.Drawing.Size(48, 17);
+            this.LbEmail.Size = new System.Drawing.Size(62, 21);
             this.LbEmail.TabIndex = 14;
             this.LbEmail.Text = "Email :";
             // 
@@ -131,16 +123,24 @@
             this.LbCelular.AutoSize = true;
             this.LbCelular.Location = new System.Drawing.Point(75, 143);
             this.LbCelular.Name = "LbCelular";
-            this.LbCelular.Size = new System.Drawing.Size(57, 17);
+            this.LbCelular.Size = new System.Drawing.Size(72, 21);
             this.LbCelular.TabIndex = 12;
             this.LbCelular.Text = "Celular :";
+            // 
+            // TbRazonSocial
+            // 
+            this.TbRazonSocial.Location = new System.Drawing.Point(153, 69);
+            this.TbRazonSocial.MaxLength = 250;
+            this.TbRazonSocial.Name = "TbRazonSocial";
+            this.TbRazonSocial.Size = new System.Drawing.Size(622, 28);
+            this.TbRazonSocial.TabIndex = 5;
             // 
             // TbApellido2
             // 
             this.TbApellido2.Location = new System.Drawing.Point(547, 105);
             this.TbApellido2.MaxLength = 50;
             this.TbApellido2.Name = "TbApellido2";
-            this.TbApellido2.Size = new System.Drawing.Size(228, 24);
+            this.TbApellido2.Size = new System.Drawing.Size(228, 28);
             this.TbApellido2.TabIndex = 11;
             // 
             // TbApellido1
@@ -148,7 +148,7 @@
             this.TbApellido1.Location = new System.Drawing.Point(153, 105);
             this.TbApellido1.MaxLength = 50;
             this.TbApellido1.Name = "TbApellido1";
-            this.TbApellido1.Size = new System.Drawing.Size(228, 24);
+            this.TbApellido1.Size = new System.Drawing.Size(228, 28);
             this.TbApellido1.TabIndex = 9;
             // 
             // TbNombres
@@ -156,7 +156,7 @@
             this.TbNombres.Location = new System.Drawing.Point(153, 69);
             this.TbNombres.MaxLength = 100;
             this.TbNombres.Name = "TbNombres";
-            this.TbNombres.Size = new System.Drawing.Size(622, 24);
+            this.TbNombres.Size = new System.Drawing.Size(622, 28);
             this.TbNombres.TabIndex = 7;
             // 
             // CmbTipoDocumentoIdentidad
@@ -165,16 +165,25 @@
             this.CmbTipoDocumentoIdentidad.FormattingEnabled = true;
             this.CmbTipoDocumentoIdentidad.Location = new System.Drawing.Point(153, 33);
             this.CmbTipoDocumentoIdentidad.Name = "CmbTipoDocumentoIdentidad";
-            this.CmbTipoDocumentoIdentidad.Size = new System.Drawing.Size(228, 25);
+            this.CmbTipoDocumentoIdentidad.Size = new System.Drawing.Size(228, 29);
             this.CmbTipoDocumentoIdentidad.TabIndex = 1;
             this.CmbTipoDocumentoIdentidad.SelectedIndexChanged += new System.EventHandler(this.CmbTipoDocumentoIdentidad_SelectedIndexChanged);
+            // 
+            // LbRazonSocial
+            // 
+            this.LbRazonSocial.AutoSize = true;
+            this.LbRazonSocial.Location = new System.Drawing.Point(32, 72);
+            this.LbRazonSocial.Name = "LbRazonSocial";
+            this.LbRazonSocial.Size = new System.Drawing.Size(115, 21);
+            this.LbRazonSocial.TabIndex = 4;
+            this.LbRazonSocial.Text = "Razón Social :";
             // 
             // LbApellido2
             // 
             this.LbApellido2.AutoSize = true;
             this.LbApellido2.Location = new System.Drawing.Point(447, 108);
             this.LbApellido2.Name = "LbApellido2";
-            this.LbApellido2.Size = new System.Drawing.Size(74, 17);
+            this.LbApellido2.Size = new System.Drawing.Size(94, 21);
             this.LbApellido2.TabIndex = 10;
             this.LbApellido2.Text = "Apellido 2 :";
             // 
@@ -183,7 +192,7 @@
             this.LbApellido1.AutoSize = true;
             this.LbApellido1.Location = new System.Drawing.Point(53, 108);
             this.LbApellido1.Name = "LbApellido1";
-            this.LbApellido1.Size = new System.Drawing.Size(74, 17);
+            this.LbApellido1.Size = new System.Drawing.Size(94, 21);
             this.LbApellido1.TabIndex = 8;
             this.LbApellido1.Text = "Apellido 1 :";
             // 
@@ -192,7 +201,7 @@
             this.LbNombres.AutoSize = true;
             this.LbNombres.Location = new System.Drawing.Point(60, 72);
             this.LbNombres.Name = "LbNombres";
-            this.LbNombres.Size = new System.Drawing.Size(72, 17);
+            this.LbNombres.Size = new System.Drawing.Size(87, 21);
             this.LbNombres.TabIndex = 6;
             this.LbNombres.Text = "Nombres :";
             // 
@@ -201,7 +210,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(411, 36);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(110, 17);
+            this.label3.Size = new System.Drawing.Size(130, 21);
             this.label3.TabIndex = 2;
             this.label3.Text = "Nº Documento :";
             // 
@@ -210,26 +219,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 36);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(116, 17);
+            this.label2.Size = new System.Drawing.Size(141, 21);
             this.label2.TabIndex = 0;
             this.label2.Text = "Tipo Doc. Ident. :";
-            // 
-            // TbRazonSocial
-            // 
-            this.TbRazonSocial.Location = new System.Drawing.Point(153, 69);
-            this.TbRazonSocial.MaxLength = 250;
-            this.TbRazonSocial.Name = "TbRazonSocial";
-            this.TbRazonSocial.Size = new System.Drawing.Size(622, 24);
-            this.TbRazonSocial.TabIndex = 5;
-            // 
-            // LbRazonSocial
-            // 
-            this.LbRazonSocial.AutoSize = true;
-            this.LbRazonSocial.Location = new System.Drawing.Point(32, 72);
-            this.LbRazonSocial.Name = "LbRazonSocial";
-            this.LbRazonSocial.Size = new System.Drawing.Size(93, 17);
-            this.LbRazonSocial.TabIndex = 4;
-            this.LbRazonSocial.Text = "Razón Social :";
             // 
             // label1
             // 
@@ -239,7 +231,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(982, 35);
+            this.label1.Size = new System.Drawing.Size(982, 30);
             this.label1.TabIndex = 0;
             this.label1.Text = "Mantenedor - Cliente";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -281,54 +273,6 @@
             this.DgvCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvCliente.Size = new System.Drawing.Size(935, 338);
             this.DgvCliente.TabIndex = 0;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Tipo Doc. Ident.";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 170;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Nº Documento";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 150;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Razón Social / Apellidos y Nombres";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 300;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Teléfono";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 125;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Email";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 200;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Activo";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Width = 125;
             // 
             // LbOpcion
             // 
@@ -435,9 +379,65 @@
             this.BnFiltrar.UseVisualStyleBackColor = true;
             this.BnFiltrar.Click += new System.EventHandler(this.BnFiltrar_Click);
             // 
+            // TbDocumentoIdentidadNumero
+            // 
+            this.TbDocumentoIdentidadNumero.Location = new System.Drawing.Point(547, 34);
+            this.TbDocumentoIdentidadNumero.Name = "TbDocumentoIdentidadNumero";
+            this.TbDocumentoIdentidadNumero.Size = new System.Drawing.Size(228, 28);
+            this.TbDocumentoIdentidadNumero.TabIndex = 3;
+            this.TbDocumentoIdentidadNumero.TipoCaracteres = CapaPresentacion.Controls.CustomTextBox.TipoInput.Todo;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Tipo Doc. Ident.";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 170;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Nº Documento";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 150;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Razón Social / Apellidos y Nombres";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 300;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Teléfono";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 125;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Email";
+            this.Column5.MinimumWidth = 6;
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 200;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Activo";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Width = 125;
+            // 
             // FrmCliente
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 703);
             this.Controls.Add(this.BnFiltrar);
@@ -472,6 +472,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox GbDatos;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label LbNombres;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -505,6 +506,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.Label label1;
     }
 }

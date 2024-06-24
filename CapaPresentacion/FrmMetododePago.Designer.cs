@@ -30,6 +30,7 @@ namespace CapaPresentacion
         private void InitializeComponent()
         {
             this.GroupBox_MP = new System.Windows.Forms.GroupBox();
+            this.cmb_EstadoM = new System.Windows.Forms.ComboBox();
             this.cmb_TipoP = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -56,7 +57,6 @@ namespace CapaPresentacion
             this.btn_ModificarMP = new System.Windows.Forms.Button();
             this.btn_DeshabilitarMP = new System.Windows.Forms.Button();
             this.BTN_Salir = new System.Windows.Forms.Button();
-            this.cmb_EstadoM = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.GroupBox_MP.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -93,6 +93,16 @@ namespace CapaPresentacion
             this.GroupBox_MP.TabStop = false;
             this.GroupBox_MP.Text = "Datos FormaPago";
             this.GroupBox_MP.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // cmb_EstadoM
+            // 
+            this.cmb_EstadoM.FormattingEnabled = true;
+            this.cmb_EstadoM.Items.AddRange(new object[] {
+            "Habilitado"});
+            this.cmb_EstadoM.Location = new System.Drawing.Point(734, 36);
+            this.cmb_EstadoM.Name = "cmb_EstadoM";
+            this.cmb_EstadoM.Size = new System.Drawing.Size(126, 24);
+            this.cmb_EstadoM.TabIndex = 18;
             // 
             // cmb_TipoP
             // 
@@ -275,6 +285,10 @@ namespace CapaPresentacion
             // 
             this.Dgv_MetodoPago.AllowUserToAddRows = false;
             this.Dgv_MetodoPago.AllowUserToDeleteRows = false;
+            this.Dgv_MetodoPago.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Dgv_MetodoPago.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Dgv_MetodoPago.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_MetodoPago.Location = new System.Drawing.Point(41, 33);
             this.Dgv_MetodoPago.Name = "Dgv_MetodoPago";
@@ -365,17 +379,6 @@ namespace CapaPresentacion
             this.BTN_Salir.Text = "Salir";
             this.BTN_Salir.UseVisualStyleBackColor = true;
             this.BTN_Salir.Click += new System.EventHandler(this.BTN_Salir_Click);
-            // 
-            // cmb_EstadoM
-            // 
-            this.cmb_EstadoM.FormattingEnabled = true;
-            this.cmb_EstadoM.Items.AddRange(new object[] {
-            "Dolar",
-            "Soles"});
-            this.cmb_EstadoM.Location = new System.Drawing.Point(734, 36);
-            this.cmb_EstadoM.Name = "cmb_EstadoM";
-            this.cmb_EstadoM.Size = new System.Drawing.Size(126, 24);
-            this.cmb_EstadoM.TabIndex = 18;
             // 
             // label1
             // 
