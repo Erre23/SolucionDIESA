@@ -34,6 +34,7 @@
             this.mnuTaller = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTipoDocumentoIdentidad = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCliente = new System.Windows.Forms.ToolStripMenuItem();
+            this.inspectorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.editMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,7 +46,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.inspectorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tipoDeInspeccionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -72,6 +73,7 @@
             this.mnuCliente,
             this.inspectorToolStripMenuItem,
             this.toolStripSeparator5,
+            this.tipoDeInspeccionToolStripMenuItem,
             this.mnuExit});
             this.mnuMantenedor.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder;
             this.mnuMantenedor.Name = "mnuMantenedor";
@@ -98,6 +100,13 @@
             this.mnuCliente.Size = new System.Drawing.Size(248, 22);
             this.mnuCliente.Text = "Cliente";
             this.mnuCliente.Click += new System.EventHandler(this.mnuCliente_Click);
+            // 
+            // inspectorToolStripMenuItem
+            // 
+            this.inspectorToolStripMenuItem.Name = "inspectorToolStripMenuItem";
+            this.inspectorToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.inspectorToolStripMenuItem.Text = "Inspector";
+            this.inspectorToolStripMenuItem.Click += new System.EventHandler(this.inspectorToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
@@ -175,12 +184,12 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
-            // inspectorToolStripMenuItem
+            // tipoDeInspeccionToolStripMenuItem
             // 
-            this.inspectorToolStripMenuItem.Name = "inspectorToolStripMenuItem";
-            this.inspectorToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
-            this.inspectorToolStripMenuItem.Text = "Inspector";
-            this.inspectorToolStripMenuItem.Click += new System.EventHandler(this.inspectorToolStripMenuItem_Click);
+            this.tipoDeInspeccionToolStripMenuItem.Name = "tipoDeInspeccionToolStripMenuItem";
+            this.tipoDeInspeccionToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.tipoDeInspeccionToolStripMenuItem.Text = "Tipo de Inspeccion";
+            this.tipoDeInspeccionToolStripMenuItem.Click += new System.EventHandler(this.tipoDeInspeccionToolStripMenuItem_Click);
             // 
             // FrmMenu
             // 
@@ -224,6 +233,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuTipoDocumentoIdentidad;
         private System.Windows.Forms.ToolStripMenuItem mnuTaller;
         private System.Windows.Forms.ToolStripMenuItem inspectorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tipoDeInspeccionToolStripMenuItem;
     }
 }
 

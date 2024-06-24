@@ -58,6 +58,7 @@
     <Compile Include="DaoDistrito.cs" />
     <Compile Include="DaoCliente.cs" />
     <Compile Include="DaoTipoDocumentoIdentidad.cs" />
+    <Compile Include="DaoTipoInspeccion.cs" />
     <Compile Include="DaoUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

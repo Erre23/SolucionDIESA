@@ -14,7 +14,9 @@ namespace CapaPresentacion
     public partial class FrmMenu : Form
     {
         Form formInspector;
+        Form formTipoInspeccion;
         public FrmMenu()
+
         {
             InitializeComponent();
         }
@@ -104,6 +106,20 @@ namespace CapaPresentacion
             else
             {
                 formInspector.Activate();
+            }
+        }
+
+        private void tipoDeInspeccionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (formTipoInspeccion == null || formTipoInspeccion.IsDisposed)
+            {
+                formTipoInspeccion = new FrmTipoInspeccion();
+                formTipoInspeccion.MdiParent = this;
+                formTipoInspeccion.Show();
+            }
+            else
+            {
+                formTipoInspeccion.Activate();
             }
         }
     }
