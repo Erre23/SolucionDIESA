@@ -104,7 +104,7 @@ namespace CapaDatos
             try
             {
                 SqlConnection cn = Conexion.Instancia.Conectar(); //singleton
-                cmd = new SqlCommand("spListarTipoInspector", cn);
+                cmd = new SqlCommand("spListarTipoInspeccion", cn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cn.Open();
                 SqlDataReader dr = cmd.ExecuteReader();
@@ -112,10 +112,10 @@ namespace CapaDatos
                 {
                     EntTipoInspeccion Cli = new EntTipoInspeccion();
 
-                    Cli.IdTipoInspeccion = Convert.ToInt32(dr["Id de Inspeccion"]);
+                    Cli.IdTipoInspeccion = Convert.ToInt32(dr["IdTipoInspeccion"]);
                     Cli.Estado = dr["Estado"].ToString();
-                    Cli.TipoInspeccion = dr["Nombre de la Inspeccion"].ToString();
-                    Cli.Descripcion = dr["Drescripcion"].ToString();
+                    Cli.TipoInspeccion = dr["TipoInspeccion"].ToString();
+                    Cli.Descripcion = dr["Descripcion"].ToString();
                     
                     
                     lista.Add(Cli);
