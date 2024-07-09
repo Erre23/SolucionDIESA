@@ -156,6 +156,40 @@ namespace CapaDatos
             return cliente;
         }
 
+        public async Task<Cliente> BuscarPorDocumentoIdentidad(short idTipoDocumentoIdentidad, string numeroDocumentoIdentidad)
+        {
+            var cmd = (SqlCommand)null;
+            var cliente = (Cliente)null;
+            try
+            {
+                SqlConnection cnn = Conexion.Instancia.Conectar();
+                cmd = new SqlCommand("spClienteBuscarPorDocumentoIdentidad", cnn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.Add(CreateParams.TinyInt("IdTipoDocumentoIdentidad", idTipoDocumentoIdentidad));
+                cmd.Parameters.Add(CreateParams.NVarchar("NumeroDocumentoIdentidad", numeroDocumentoIdentidad, 20));
+                await cnn.OpenAsync();
+
+                SqlDataReader dr = await cmd.ExecuteReaderAsync();
+                while (await dr.ReadAsync())
+                {
+                    cliente = await ReadEntidad(dr);
+                }
+                dr.Close();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                cmd.Connection.Close();
+                cmd.Dispose();
+            }
+
+            return cliente;
+        }
+
         public async Task<List<Cliente>> BusquedaGeneral(short? idTipoDocumentoIdentidad, string numeroDocumentoIdentidad, string rasonSocial, string nombres, string apellido1, string apellido2)
         {
             var cmd = (SqlCommand)null;

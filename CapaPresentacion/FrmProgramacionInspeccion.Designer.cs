@@ -28,17 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.GbCliente = new System.Windows.Forms.GroupBox();
+            this.BnBuscarCliente = new System.Windows.Forms.Button();
             this.TbCliente = new System.Windows.Forms.TextBox();
-            this.TbNumeroDocumentoIdentidad = new System.Windows.Forms.TextBox();
-            this.CbTipoDocumentoIdentidad = new System.Windows.Forms.ComboBox();
+            this.TbNumeroDocumentoIdentidad = new CapaPresentacion.Controls.CustomTextBox();
+            this.CmbTipoDocumentoIdentidad = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.GbLista = new System.Windows.Forms.GroupBox();
             this.DgvTarea = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BnGuardar = new System.Windows.Forms.Button();
             this.BnCancelar = new System.Windows.Forms.Button();
             this.BnNuevo = new System.Windows.Forms.Button();
@@ -65,8 +68,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.CbFormaPago = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GbCliente.SuspendLayout();
             this.GbLista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvTarea)).BeginInit();
@@ -76,18 +77,30 @@
             // 
             // GbCliente
             // 
+            this.GbCliente.Controls.Add(this.BnBuscarCliente);
             this.GbCliente.Controls.Add(this.TbCliente);
             this.GbCliente.Controls.Add(this.TbNumeroDocumentoIdentidad);
-            this.GbCliente.Controls.Add(this.CbTipoDocumentoIdentidad);
+            this.GbCliente.Controls.Add(this.CmbTipoDocumentoIdentidad);
             this.GbCliente.Controls.Add(this.label4);
             this.GbCliente.Controls.Add(this.label3);
             this.GbCliente.Controls.Add(this.label2);
             this.GbCliente.Location = new System.Drawing.Point(12, 47);
             this.GbCliente.Name = "GbCliente";
-            this.GbCliente.Size = new System.Drawing.Size(784, 110);
+            this.GbCliente.Size = new System.Drawing.Size(958, 110);
             this.GbCliente.TabIndex = 0;
             this.GbCliente.TabStop = false;
             this.GbCliente.Text = "Datos del Cliente";
+            // 
+            // BnBuscarCliente
+            // 
+            this.BnBuscarCliente.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BnBuscarCliente.Location = new System.Drawing.Point(781, 32);
+            this.BnBuscarCliente.Name = "BnBuscarCliente";
+            this.BnBuscarCliente.Size = new System.Drawing.Size(166, 30);
+            this.BnBuscarCliente.TabIndex = 9;
+            this.BnBuscarCliente.Text = "Buscar Cliente";
+            this.BnBuscarCliente.UseVisualStyleBackColor = true;
+            this.BnBuscarCliente.Click += new System.EventHandler(this.BnBuscarCliente_Click);
             // 
             // TbCliente
             // 
@@ -103,15 +116,18 @@
             this.TbNumeroDocumentoIdentidad.Name = "TbNumeroDocumentoIdentidad";
             this.TbNumeroDocumentoIdentidad.Size = new System.Drawing.Size(228, 28);
             this.TbNumeroDocumentoIdentidad.TabIndex = 7;
+            this.TbNumeroDocumentoIdentidad.TipoCaracteres = CapaPresentacion.Controls.CustomTextBox.TipoInput.Todo;
+            this.TbNumeroDocumentoIdentidad.TextChanged += new System.EventHandler(this.TbNumeroDocumentoIdentidad_TextChanged);
             // 
-            // CbTipoDocumentoIdentidad
+            // CmbTipoDocumentoIdentidad
             // 
-            this.CbTipoDocumentoIdentidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CbTipoDocumentoIdentidad.FormattingEnabled = true;
-            this.CbTipoDocumentoIdentidad.Location = new System.Drawing.Point(153, 33);
-            this.CbTipoDocumentoIdentidad.Name = "CbTipoDocumentoIdentidad";
-            this.CbTipoDocumentoIdentidad.Size = new System.Drawing.Size(228, 29);
-            this.CbTipoDocumentoIdentidad.TabIndex = 6;
+            this.CmbTipoDocumentoIdentidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbTipoDocumentoIdentidad.FormattingEnabled = true;
+            this.CmbTipoDocumentoIdentidad.Location = new System.Drawing.Point(153, 33);
+            this.CmbTipoDocumentoIdentidad.Name = "CmbTipoDocumentoIdentidad";
+            this.CmbTipoDocumentoIdentidad.Size = new System.Drawing.Size(228, 29);
+            this.CmbTipoDocumentoIdentidad.TabIndex = 6;
+            this.CmbTipoDocumentoIdentidad.SelectedIndexChanged += new System.EventHandler(this.CmbTipoDocumentoIdentidad_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -185,6 +201,24 @@
             this.DgvTarea.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvTarea.Size = new System.Drawing.Size(935, 191);
             this.DgvTarea.TabIndex = 0;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Tarea";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 170;
+            // 
+            // Column2
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Column2.HeaderText = "Precio";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 150;
             // 
             // BnGuardar
             // 
@@ -459,24 +493,6 @@
             this.label14.TabIndex = 0;
             this.label14.Text = "Forma de Pago :";
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Tarea";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 170;
-            // 
-            // Column2
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Column2.HeaderText = "Precio";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 150;
-            // 
             // FrmProgramacionInspeccion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -499,6 +515,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Programación de Inspección";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FrmProgramacionInspeccion_Load);
             this.GbCliente.ResumeLayout(false);
             this.GbCliente.PerformLayout();
             this.GbLista.ResumeLayout(false);
@@ -519,8 +536,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox TbCliente;
-        private System.Windows.Forms.TextBox TbNumeroDocumentoIdentidad;
-        private System.Windows.Forms.ComboBox CbTipoDocumentoIdentidad;
+        private CapaPresentacion.Controls.CustomTextBox TbNumeroDocumentoIdentidad;
+        private System.Windows.Forms.ComboBox CmbTipoDocumentoIdentidad;
         private System.Windows.Forms.GroupBox GbLista;
         private System.Windows.Forms.Button BnGuardar;
         private System.Windows.Forms.Button BnCancelar;
@@ -551,5 +568,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.Button BnBuscarCliente;
     }
 }

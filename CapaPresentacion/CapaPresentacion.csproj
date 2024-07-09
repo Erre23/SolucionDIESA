@@ -50,6 +50,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="FormAccion.cs" />
+    <Compile Include="FrmClienteModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmClienteModal.Designer.cs">
+      <DependentUpon>FrmClienteModal.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmInspector.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +124,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmClienteModal.resx">
+      <DependentUpon>FrmClienteModal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmInspector.resx">
       <DependentUpon>FrmInspector.cs</DependentUpon>
     </EmbeddedResource>

@@ -40,5 +40,24 @@ namespace CapaEntidad
                 return razonSocialOrApellidosYNombres;
             }
         }
+
+        public static bool RUCValido(string ruc)
+        {
+            if (ruc.Length != 11 || !long.TryParse(ruc, out _))
+                return false;
+
+            int[] weights = { 5, 4, 3, 2, 7, 6, 5, 4, 3, 2 };
+            int sum = 0;
+
+            for (int i = 0; i < 10; i++)
+            {
+                sum += (ruc[i] - '0') * weights[i];
+            }
+
+            int remainder = sum % 11;
+            int expectedDigit = remainder == 0 ? 0 : 11 - remainder;
+
+            return (ruc[10] - '0') == expectedDigit;
+        }
     }
 }

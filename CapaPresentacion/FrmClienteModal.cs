@@ -1,31 +1,27 @@
 ﻿using CapaEntidad;
 using CapaLogica;
+using CapaPresentacion.Controls;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using CapaPresentacion.Controls;
-using System.Runtime.InteropServices;
-using System.Runtime.CompilerServices;
 
 namespace CapaPresentacion
 {
-    public partial class FrmCliente : Form
+    public partial class FrmClienteModal : Form
     {
-        ToolStripMenuItem _menu;
-        public FrmCliente(ToolStripMenuItem menu)
+        private short _IdTipoDocumentoIdentidad;
+        private string _NumeroDocumentoIdentidad;
+        public FrmClienteModal(short idTipoDocumentoIdentidad, string numeroDocumentoIdentidad)
         {
-            _menu = menu;
-            _menu.Enabled = false;
             InitializeComponent();
-            BnFiltrar.Location = BnCancelar.Location;
             SetAccion(FormAccion.ninguno);
+
+            _IdTipoDocumentoIdentidad = idTipoDocumentoIdentidad;
+            _NumeroDocumentoIdentidad = numeroDocumentoIdentidad;
         }
+
+
 
         private async void FrmCliente_Load(object sender, EventArgs e)
         {
@@ -39,11 +35,26 @@ namespace CapaPresentacion
                     CmbTipoDocumentoIdentidad.Items.Add(item);
                 }
 
-                if (CmbTipoDocumentoIdentidad.Items.Count > 0) CmbTipoDocumentoIdentidad.SelectedIndex = 0;
+                SetAccion(FormAccion.nuevo);
+
+                this.CurrentCliente = new Cliente
+                {
+                    IdTipoDocumentoIdentidad = _IdTipoDocumentoIdentidad,
+                    NumeroDocumentoIdentidad = _NumeroDocumentoIdentidad,
+                    TipoDocumentoIdentidad = tiposDocumentoIdentidad.Find(x => x.IdTipoDocumentoIdentidad == _IdTipoDocumentoIdentidad)
+                };
+                
+                GbDatos_MostrarDatos(this.CurrentCliente);
+                CmbTipoDocumentoIdentidad.Enabled = false;
+                TbDocumentoIdentidadNumero.Enabled = false;
+
+                if (this.CurrentCliente.TipoDocumentoIdentidad.PersonaJuridica) TbRazonSocial.Focus();
+                else TbNombres.Focus();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(this, ex.Message, "Se produjo un error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                this.Close();
             }
         }
 
@@ -58,49 +69,9 @@ namespace CapaPresentacion
 
         #region Métodos
 
-        private void DgvCliente_Agregar(Cliente cliente)
-        {
-            var indice = 
-                DgvCliente.Rows.Add(
-                    cliente.TipoDocumentoIdentidad.Nombre, 
-                    cliente.NumeroDocumentoIdentidad, 
-                    cliente.RazonSocialOrApellidosYNombres,
-                    cliente.Celular, 
-                    cliente.Email, 
-                    cliente.Activo ? "SI" : ""
-                );
-            DgvCliente.Rows[indice].Tag = cliente;
-        }
-
-        private void DgvCliente_Actualizar(Cliente cliente)
-        {
-
-            DgvCliente.CurrentRow.Tag = cliente;
-            DgvCliente.CurrentRow.Cells[0].Value = cliente.TipoDocumentoIdentidad.Nombre;
-            DgvCliente.CurrentRow.Cells[1].Value = cliente.NumeroDocumentoIdentidad;
-            DgvCliente.CurrentRow.Cells[2].Value = cliente.RazonSocialOrApellidosYNombres;
-            DgvCliente.CurrentRow.Cells[3].Value = cliente.Celular;
-            DgvCliente.CurrentRow.Cells[4].Value = cliente.Email;
-            DgvCliente.CurrentRow.Cells[5].Value = cliente.Activo ? "SI" : "";
-        }
-
         private FormAccion Accion;
         private Cliente CurrentCliente;
-
-        public void Botones_Enabled(bool nuevo, bool editar, bool deshabilitar, bool buscar)
-        {
-            BnNuevo.Enabled = nuevo;
-            BnEditar.Enabled = editar;
-            BnDeshabilitar.Enabled = deshabilitar;
-            BnBuscar.Enabled = buscar;
-        }
-
-        public void Botones_Visible(bool guardar, bool cancelar, bool filtrar)
-        {
-            BnGuardar.Visible = guardar;
-            BnCancelar.Visible = cancelar;
-            BnFiltrar.Visible = filtrar;
-        }
+        public Cliente GetCurrentCliente { get { return this.CurrentCliente; } }
 
         public void GBDatos_Limpiar()
         {
@@ -113,6 +84,7 @@ namespace CapaPresentacion
             TbCelular.Clear();
             TbEmail.Clear();
         }
+
         private void GbDatos_MostrarDatos(Cliente cliente)
         {
             this.CurrentCliente = cliente;
@@ -148,32 +120,20 @@ namespace CapaPresentacion
             {
                 case FormAccion.ninguno:
                     LbOpcion.Text = "";
-                    Botones_Enabled(true, true, true, true);
-                    Botones_Visible(false, false, false);
                     GbDatos.Enabled = false;
-                    GbLista.Enabled = true;
                     break;
                 case FormAccion.nuevo:
                     LbOpcion.Text = "OPCIÓN : NUEVO";
                     CmbTipoDocumentoIdentidad.SelectedIndex = 0;
-                    Botones_Enabled(false, false, false, false);
-                    Botones_Visible(true, true, false);
                     GbDatos.Enabled = true;
-                    GbLista.Enabled = false;
                     break;
                 case FormAccion.editar:
                     LbOpcion.Text = "OPCIÓN : EDITAR";
-                    Botones_Enabled(false, false, false, false);
-                    Botones_Visible(true, true, false);
                     GbDatos.Enabled = true;
-                    GbLista.Enabled = false;
                     break;
                 case FormAccion.buscar:
                     LbOpcion.Text = "OPCIÓN : BUSCAR";
-                    Botones_Enabled(true, true, true, false);
-                    Botones_Visible(false, false, true);
                     GbDatos.Enabled = true;
-                    GbLista.Enabled = true;
                     break;
             }
         }
@@ -216,79 +176,6 @@ namespace CapaPresentacion
             TbDocumentoIdentidadNumero.Clear();
         }
 
-        private void BnNuevo_Click(object sender, EventArgs e)
-        {
-            SetAccion(FormAccion.nuevo);
-        }
-
-        private void BnEditar_Click(object sender, EventArgs e)
-        {
-            var cliente = (Cliente)DgvCliente.CurrentRow?.Tag;
-            if (cliente == null)
-            {
-                MessageBox.Show(this, "Olvidó seleccionar un cliente", "Un momento por favor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
-            SetAccion(FormAccion.editar);
-            GbDatos_MostrarDatos(cliente);
-        }
-
-        private async void BnDeshabilitar_Click(object sender, EventArgs e)
-        {
-            var cliente = (Cliente)DgvCliente.CurrentRow?.Tag;
-            if (cliente == null)
-            {
-                MessageBox.Show(this, "Olvidó seleccionar un cliente", "Un momento por favor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
-
-            string datosCliente = "\n";
-            datosCliente += "\n\r - Tipo de Doc.:" + cliente.TipoDocumentoIdentidad.Nombre;
-            datosCliente += "\n\r - Nº de Documento: " + cliente.NumeroDocumentoIdentidad;
-            if (cliente.TipoDocumentoIdentidad.PersonaJuridica)
-            {
-                datosCliente += "\n\r - Razón Social: " + cliente.RazonSocial;
-            }
-            else
-            {
-                datosCliente += "\n\r - Nombres: " + cliente.Nombres;
-                datosCliente += "\n\r - Apellido1: " + cliente.Apellido1;
-                datosCliente += "\n\r - Apellido2: " + cliente.Apellido2;
-            }
-
-            if (MessageBox.Show(this, "¿Está seguro de deshabilitar al cliente?" + datosCliente, "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-            {
-                return;
-            }
-
-            try
-            {
-                BnDeshabilitar.Enabled = false;
-                this.Cursor = Cursors.WaitCursor;
-                await LogCliente.Instancia.ClienteDeshabilitar(cliente.IdCliente);
-                cliente.Activo = false;
-                DgvCliente_Actualizar(cliente);
-
-
-                this.Cursor = Cursors.Default;
-                MessageBox.Show(this, "El cliente fue deshabilitado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                BnDeshabilitar.Enabled = true;
-
-                SetAccion(FormAccion.ninguno);
-            }
-            catch (Exception ex)
-            {
-                this.Cursor = Cursors.Default;
-                MessageBox.Show(this, ex.Message, "Se produjo un error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                BnDeshabilitar.Enabled = true;
-            }
-        }
-
-        private void BnBuscar_Click(object sender, EventArgs e)
-        {
-            SetAccion(FormAccion.buscar);
-        }
-
         private async void BnGuardar_Click(object sender, EventArgs e)
         {
             try
@@ -328,7 +215,7 @@ namespace CapaPresentacion
                     return;
                 }
 
-
+                
                 if (this.Accion == FormAccion.nuevo) this.CurrentCliente = new Cliente();
                 this.CurrentCliente.TipoDocumentoIdentidad = tipoDocumentoIdentidad;
                 this.CurrentCliente.IdTipoDocumentoIdentidad = tipoDocumentoIdentidad.IdTipoDocumentoIdentidad;
@@ -352,20 +239,18 @@ namespace CapaPresentacion
                 if (this.Accion == FormAccion.nuevo)
                 {
                     this.CurrentCliente.IdCliente = await LogCliente.Instancia.ClienteInsertar(this.CurrentCliente);
-                    DgvCliente_Agregar(this.CurrentCliente);
                 }
                 else
                 {
                     await LogCliente.Instancia.ClienteActualizar(this.CurrentCliente);
-                    DgvCliente_Actualizar(this.CurrentCliente);
                 }
 
                 
                 this.Cursor = Cursors.Default;
                 MessageBox.Show(this, "Los datos fueron guardados", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 BnGuardar.Enabled = true;
-
-                SetAccion(FormAccion.ninguno);
+                this.Accion = FormAccion.ninguno;
+                this.DialogResult = DialogResult.OK;
             }
             catch (Exception ex)
             {
@@ -377,56 +262,7 @@ namespace CapaPresentacion
 
         private void BnCancelar_Click(object sender, EventArgs e)
         {
-            SetAccion(FormAccion.ninguno);
-        }
-
-        private async void BnFiltrar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                DgvCliente.Rows.Clear();
-                BnFiltrar.Enabled = false;
-                this.Cursor = Cursors.WaitCursor;
-
-                var tipoDocumentoIdentidad = (TipoDocumentoIdentidad)CmbTipoDocumentoIdentidad.SelectedItem;
-                var listaClientes = await LogCliente.Instancia.ClienteBusquedaGeneral(
-                    tipoDocumentoIdentidad?.IdTipoDocumentoIdentidad,
-                    TbDocumentoIdentidadNumero.Text.Trim(),
-                    TbRazonSocial.Text.Trim(),
-                    TbNombres.Text.Trim(),
-                    TbApellido1.Text.Trim(),
-                    TbApellido2.Text.Trim()
-                );
-
-                foreach (var cliente in listaClientes)
-                {
-                    DgvCliente_Agregar(cliente);
-                }
-
-                BnFiltrar.Enabled = true;
-                this.Cursor = Cursors.Default;
-
-                if (listaClientes.Count() == 0)
-                {
-                    MessageBox.Show(this, "No se encontraron resultados con los datos de búsqueda ingresado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                this.Cursor = Cursors.Default;
-                MessageBox.Show(this, ex.Message, "Se produjo un error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                BnFiltrar.Enabled = true;
-            }
-        }
-
-        private void BnSalir_Click(object sender, EventArgs e)
-        {
             this.Close();
-        }
-
-        private void FrmCliente_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            this._menu.Enabled = true;
         }
     }
 }
