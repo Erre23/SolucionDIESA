@@ -186,9 +186,9 @@ namespace CapaPresentacion
                     }
                 }
                 TbVehiculo.Text = this.CurrentProgramacionInspeccion.Vehiculo;
-                CbTipoInspeccion.Items.Clear();
-                CbTipoInspeccion.Items.Add(this.CurrentProgramacionInspeccion.TipoInspeccion);
-                CbTipoInspeccion.SelectedIndex = 0;
+                //CbTipoInspeccion.Items.Clear();
+                //CbTipoInspeccion.Items.Add(this.CurrentProgramacionInspeccion.TipoInspeccion);
+                //CbTipoInspeccion.SelectedIndex = 0;
 
                 CbTaller.Items.Clear();
                 CbTaller.Items.Add(this.CurrentProgramacionInspeccion.Taller);
@@ -267,6 +267,7 @@ namespace CapaPresentacion
                 this.CurrentProgramacionInspeccion.Taller = taller;
                 this.CurrentProgramacionInspeccion.InspeccionFecha = DtpFecha.Value.Date;
                 this.CurrentProgramacionInspeccion.InspeccionHora = (DateTime)CbHora.SelectedItem;
+                this.CurrentProgramacionInspeccion.IdInspector = inspector.IdInspector;
                 this.CurrentProgramacionInspeccion.Inspector = inspector;
                 this.CurrentProgramacionInspeccion.IdMetodoPago = metodoPago.IdMetodoPago;
                 this.CurrentProgramacionInspeccion.MetodoPago = metodoPago;
