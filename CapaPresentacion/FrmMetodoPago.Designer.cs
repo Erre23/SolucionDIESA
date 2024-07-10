@@ -1,6 +1,6 @@
 ﻿namespace CapaPresentacion
 {
-    partial class FrmTipoInspeccion
+    partial class FrmMetodoPago
     {
         /// <summary>
         /// Required designer variable.
@@ -29,16 +29,11 @@
         private void InitializeComponent()
         {
             this.GbDatos = new System.Windows.Forms.GroupBox();
-            this.TbPrecio = new CapaPresentacion.Controls.CustomTextBox();
             this.TbNombre = new System.Windows.Forms.TextBox();
-            this.LbLongitudMinima = new System.Windows.Forms.Label();
             this.LbNombre = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.GbLista = new System.Windows.Forms.GroupBox();
-            this.DgvTipoInspeccion = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DgvMetodoPago = new System.Windows.Forms.DataGridView();
             this.LbOpcion = new System.Windows.Forms.Label();
             this.BnGuardar = new System.Windows.Forms.Button();
             this.BnCancelar = new System.Windows.Forms.Button();
@@ -46,32 +41,23 @@
             this.BnEditar = new System.Windows.Forms.Button();
             this.BnDeshabilitar = new System.Windows.Forms.Button();
             this.BnSalir = new System.Windows.Forms.Button();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GbDatos.SuspendLayout();
             this.GbLista.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvTipoInspeccion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvMetodoPago)).BeginInit();
             this.SuspendLayout();
             // 
             // GbDatos
             // 
-            this.GbDatos.Controls.Add(this.TbPrecio);
             this.GbDatos.Controls.Add(this.TbNombre);
-            this.GbDatos.Controls.Add(this.LbLongitudMinima);
             this.GbDatos.Controls.Add(this.LbNombre);
             this.GbDatos.Location = new System.Drawing.Point(12, 47);
             this.GbDatos.Name = "GbDatos";
-            this.GbDatos.Size = new System.Drawing.Size(536, 94);
+            this.GbDatos.Size = new System.Drawing.Size(536, 65);
             this.GbDatos.TabIndex = 1;
             this.GbDatos.TabStop = false;
             this.GbDatos.Text = "Datos del Tipo de Inspección";
-            // 
-            // TbPrecio
-            // 
-            this.TbPrecio.Location = new System.Drawing.Point(81, 57);
-            this.TbPrecio.MaxLength = 4;
-            this.TbPrecio.Name = "TbPrecio";
-            this.TbPrecio.Size = new System.Drawing.Size(93, 24);
-            this.TbPrecio.TabIndex = 9;
-            this.TbPrecio.TipoCaracteres = CapaPresentacion.Controls.CustomTextBox.TipoInput.SoloNumeros;
             // 
             // TbNombre
             // 
@@ -80,15 +66,6 @@
             this.TbNombre.Name = "TbNombre";
             this.TbNombre.Size = new System.Drawing.Size(449, 24);
             this.TbNombre.TabIndex = 7;
-            // 
-            // LbLongitudMinima
-            // 
-            this.LbLongitudMinima.AutoSize = true;
-            this.LbLongitudMinima.Location = new System.Drawing.Point(23, 60);
-            this.LbLongitudMinima.Name = "LbLongitudMinima";
-            this.LbLongitudMinima.Size = new System.Drawing.Size(54, 17);
-            this.LbLongitudMinima.TabIndex = 8;
-            this.LbLongitudMinima.Text = "Precio :";
             // 
             // LbNombre
             // 
@@ -117,68 +94,41 @@
             this.GbLista.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.GbLista.Controls.Add(this.DgvTipoInspeccion);
-            this.GbLista.Location = new System.Drawing.Point(12, 188);
+            this.GbLista.Controls.Add(this.DgvMetodoPago);
+            this.GbLista.Location = new System.Drawing.Point(12, 160);
             this.GbLista.Name = "GbLista";
-            this.GbLista.Size = new System.Drawing.Size(958, 460);
+            this.GbLista.Size = new System.Drawing.Size(958, 488);
             this.GbLista.TabIndex = 6;
             this.GbLista.TabStop = false;
             this.GbLista.Text = "Lista de Tipos de Inspección";
             // 
-            // DgvTipoInspeccion
+            // DgvMetodoPago
             // 
-            this.DgvTipoInspeccion.AllowUserToAddRows = false;
-            this.DgvTipoInspeccion.AllowUserToDeleteRows = false;
-            this.DgvTipoInspeccion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.DgvMetodoPago.AllowUserToAddRows = false;
+            this.DgvMetodoPago.AllowUserToDeleteRows = false;
+            this.DgvMetodoPago.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DgvTipoInspeccion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvTipoInspeccion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.DgvMetodoPago.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvMetodoPago.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
-            this.Column3,
             this.Column6});
-            this.DgvTipoInspeccion.Location = new System.Drawing.Point(12, 25);
-            this.DgvTipoInspeccion.MultiSelect = false;
-            this.DgvTipoInspeccion.Name = "DgvTipoInspeccion";
-            this.DgvTipoInspeccion.ReadOnly = true;
-            this.DgvTipoInspeccion.RowHeadersWidth = 51;
-            this.DgvTipoInspeccion.RowTemplate.Height = 24;
-            this.DgvTipoInspeccion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvTipoInspeccion.Size = new System.Drawing.Size(935, 421);
-            this.DgvTipoInspeccion.TabIndex = 0;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Nombre";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 170;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Precio S/";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column3.Width = 150;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Activo";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column6.Width = 125;
+            this.DgvMetodoPago.Location = new System.Drawing.Point(12, 25);
+            this.DgvMetodoPago.MultiSelect = false;
+            this.DgvMetodoPago.Name = "DgvMetodoPago";
+            this.DgvMetodoPago.ReadOnly = true;
+            this.DgvMetodoPago.RowHeadersWidth = 51;
+            this.DgvMetodoPago.RowTemplate.Height = 24;
+            this.DgvMetodoPago.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DgvMetodoPago.Size = new System.Drawing.Size(935, 449);
+            this.DgvMetodoPago.TabIndex = 0;
             // 
             // LbOpcion
             // 
             this.LbOpcion.BackColor = System.Drawing.SystemColors.Highlight;
             this.LbOpcion.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LbOpcion.ForeColor = System.Drawing.Color.White;
-            this.LbOpcion.Location = new System.Drawing.Point(12, 149);
+            this.LbOpcion.Location = new System.Drawing.Point(12, 121);
             this.LbOpcion.Name = "LbOpcion";
             this.LbOpcion.Size = new System.Drawing.Size(246, 30);
             this.LbOpcion.TabIndex = 2;
@@ -188,7 +138,7 @@
             // BnGuardar
             // 
             this.BnGuardar.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BnGuardar.Location = new System.Drawing.Point(321, 147);
+            this.BnGuardar.Location = new System.Drawing.Point(321, 119);
             this.BnGuardar.Name = "BnGuardar";
             this.BnGuardar.Size = new System.Drawing.Size(110, 35);
             this.BnGuardar.TabIndex = 3;
@@ -199,7 +149,7 @@
             // BnCancelar
             // 
             this.BnCancelar.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BnCancelar.Location = new System.Drawing.Point(440, 147);
+            this.BnCancelar.Location = new System.Drawing.Point(440, 119);
             this.BnCancelar.Name = "BnCancelar";
             this.BnCancelar.Size = new System.Drawing.Size(110, 35);
             this.BnCancelar.TabIndex = 4;
@@ -255,7 +205,24 @@
             this.BnSalir.UseVisualStyleBackColor = true;
             this.BnSalir.Click += new System.EventHandler(this.BnSalir_Click);
             // 
-            // FrmTipoInspeccion
+            // Column1
+            // 
+            this.Column1.HeaderText = "Nombre";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 170;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Activo";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column6.Width = 125;
+            // 
+            // FrmMetodoPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -272,17 +239,17 @@
             this.Controls.Add(this.GbDatos);
             this.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "FrmTipoInspeccion";
+            this.Name = "FrmMetodoPago";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Mantenedor - Tipo de Inspección";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmTipoInspeccion_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmTipoInspeccion_FormClosed);
-            this.Load += new System.EventHandler(this.FrmTipoInspeccion_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMetodoPago_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMetodoPago_FormClosed);
+            this.Load += new System.EventHandler(this.FrmMetodoPago_Load);
             this.GbDatos.ResumeLayout(false);
             this.GbDatos.PerformLayout();
             this.GbLista.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DgvTipoInspeccion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvMetodoPago)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -292,9 +259,7 @@
         private System.Windows.Forms.GroupBox GbDatos;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label LbNombre;
-        private Controls.CustomTextBox TbPrecio;
         private System.Windows.Forms.TextBox TbNombre;
-        private System.Windows.Forms.Label LbLongitudMinima;
         private System.Windows.Forms.GroupBox GbLista;
         private System.Windows.Forms.Label LbOpcion;
         private System.Windows.Forms.Button BnGuardar;
@@ -303,9 +268,8 @@
         private System.Windows.Forms.Button BnEditar;
         private System.Windows.Forms.Button BnDeshabilitar;
         private System.Windows.Forms.Button BnSalir;
-        private System.Windows.Forms.DataGridView DgvTipoInspeccion;
+        private System.Windows.Forms.DataGridView DgvMetodoPago;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
     }
 }

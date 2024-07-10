@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.CmbTipoDocumentoIdentidad = new System.Windows.Forms.ComboBox();
-            this.TbDocumentoIdentidadNumero = new Controls.CustomTextBox();
+            this.TbDocumentoIdentidadNumero = new CapaPresentacion.Controls.CustomTextBox();
             this.BnBuscar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.TbApellidosNombres = new System.Windows.Forms.TextBox();
@@ -45,18 +45,18 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 53);
+            this.label1.Location = new System.Drawing.Point(44, 54);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(167, 21);
+            this.label1.Size = new System.Drawing.Size(137, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tipo Doc. Identidad :";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 99);
+            this.label2.Location = new System.Drawing.Point(54, 100);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(154, 21);
+            this.label2.Size = new System.Drawing.Size(127, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "Nº Doc. Identidad :";
             // 
@@ -66,7 +66,7 @@
             this.CmbTipoDocumentoIdentidad.FormattingEnabled = true;
             this.CmbTipoDocumentoIdentidad.Location = new System.Drawing.Point(188, 50);
             this.CmbTipoDocumentoIdentidad.Name = "CmbTipoDocumentoIdentidad";
-            this.CmbTipoDocumentoIdentidad.Size = new System.Drawing.Size(242, 29);
+            this.CmbTipoDocumentoIdentidad.Size = new System.Drawing.Size(242, 25);
             this.CmbTipoDocumentoIdentidad.TabIndex = 2;
             this.CmbTipoDocumentoIdentidad.SelectedIndexChanged += new System.EventHandler(this.CmbTipoDocumentoIdentidad_SelectedIndexChanged);
             this.CmbTipoDocumentoIdentidad.SelectedValueChanged += new System.EventHandler(this.CmbTipoDocumentoIdentidad_SelectedValueChanged);
@@ -75,8 +75,9 @@
             // 
             this.TbDocumentoIdentidadNumero.Location = new System.Drawing.Point(188, 96);
             this.TbDocumentoIdentidadNumero.Name = "TbDocumentoIdentidadNumero";
-            this.TbDocumentoIdentidadNumero.Size = new System.Drawing.Size(242, 28);
+            this.TbDocumentoIdentidadNumero.Size = new System.Drawing.Size(242, 24);
             this.TbDocumentoIdentidadNumero.TabIndex = 3;
+            this.TbDocumentoIdentidadNumero.TipoCaracteres = CapaPresentacion.Controls.CustomTextBox.TipoInput.Todo;
             this.TbDocumentoIdentidadNumero.TextChanged += new System.EventHandler(this.TbNumeroDocumentoIdentidad_TextChanged);
             // 
             // BnBuscar
@@ -93,9 +94,9 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 144);
+            this.label3.Location = new System.Drawing.Point(42, 145);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(172, 21);
+            this.label3.Size = new System.Drawing.Size(139, 17);
             this.label3.TabIndex = 5;
             this.label3.Text = "Apellidos y Nombres :";
             // 
@@ -104,7 +105,7 @@
             this.TbApellidosNombres.Location = new System.Drawing.Point(188, 141);
             this.TbApellidosNombres.Name = "TbApellidosNombres";
             this.TbApellidosNombres.ReadOnly = true;
-            this.TbApellidosNombres.Size = new System.Drawing.Size(370, 28);
+            this.TbApellidosNombres.Size = new System.Drawing.Size(370, 24);
             this.TbApellidosNombres.TabIndex = 6;
             // 
             // TbContrasena
@@ -113,15 +114,15 @@
             this.TbContrasena.Location = new System.Drawing.Point(188, 188);
             this.TbContrasena.Name = "TbContrasena";
             this.TbContrasena.PasswordChar = '*';
-            this.TbContrasena.Size = new System.Drawing.Size(242, 28);
+            this.TbContrasena.Size = new System.Drawing.Size(242, 24);
             this.TbContrasena.TabIndex = 8;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(80, 191);
+            this.label4.Location = new System.Drawing.Point(94, 192);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(105, 21);
+            this.label4.Size = new System.Drawing.Size(87, 17);
             this.label4.TabIndex = 7;
             this.label4.Text = "Contraseña :";
             // 
@@ -153,13 +154,13 @@
             this.label5.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(212, 12);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(171, 24);
+            this.label5.Size = new System.Drawing.Size(137, 19);
             this.label5.TabIndex = 11;
             this.label5.Text = "Inicio de Sesión";
             // 
             // FrmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(570, 279);
             this.Controls.Add(this.label5);

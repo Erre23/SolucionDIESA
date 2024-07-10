@@ -27,6 +27,15 @@ namespace CapaDatos
             if (value == null) param.Value = DBNull.Value;
             return param;
         }
+        public static SqlParameter Decimal(string paramName, decimal? value, byte precision, byte scale)
+        {
+            var param = new SqlParameter($"@{paramName}", SqlDbType.Decimal);
+            param.Precision = precision;
+            param.Scale = scale;
+            param.Value = value;
+            if (value == null) param.Value = DBNull.Value;
+            return param;
+        }
 
         public static SqlParameter Bit(string paramName, bool? value)
         {
@@ -46,9 +55,14 @@ namespace CapaDatos
 
         public static SqlParameter Time(string paramName, DateTime value)
         {
+            if (value.Minute > 0) value = value.AddMinutes(value.Minute * -1);
+            if (value.Second > 0) value = value.AddSeconds(value.Second * -1);
+            if (value.Millisecond > 0) value = value.AddMilliseconds(value.Millisecond * -1);
+
             var param = new SqlParameter($"@{paramName}", SqlDbType.Time);
             if (value == null) param.Value = DBNull.Value;
             else param.Value = value.TimeOfDay;
+            
             return param;
         }
 

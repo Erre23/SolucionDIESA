@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace CapaDatos
 {
-    public class DaoTipoInspeccion
+    public class DaoMetodoPago
     {
         #region sigleton
-        private static readonly DaoTipoInspeccion _instancia = new DaoTipoInspeccion();
-        public static DaoTipoInspeccion Instancia { get { return _instancia; } }
+        private static readonly DaoMetodoPago _instancia = new DaoMetodoPago();
+        public static DaoMetodoPago Instancia { get { return _instancia; } }
         #endregion singleton
 
         #region métodos
-        public async Task<short> Insertar(TipoInspeccion TipoInspeccion)
+        public async Task<short> Insertar(MetodoPago MetodoPago)
         {
             var cmd = (SqlCommand)null;
             SqlConnection cnn = Conexion.Instancia.Conectar();
@@ -24,13 +24,12 @@ namespace CapaDatos
             { 
                 try
                 {
-                    cmd = new SqlCommand("spTipoInspeccionInsertar", cnn, tran);
+                    cmd = new SqlCommand("spMetodoPagoInsertar", cnn, tran);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.Add(CreateParams.NVarchar("Nombre", TipoInspeccion.Nombre, 50));
-                    cmd.Parameters.Add(CreateParams.Decimal("Precio", TipoInspeccion.Precio, 10, 2));
+                    cmd.Parameters.Add(CreateParams.NVarchar("Nombre", MetodoPago.Nombre, 50));
 
-                    TipoInspeccion.IdTipoInspeccion = Convert.ToInt16(await cmd.ExecuteScalarAsync());
+                    MetodoPago.IdMetodoPago = Convert.ToInt16(await cmd.ExecuteScalarAsync());
 
                     tran.Commit();
                     cmd.Connection.Close();
@@ -45,11 +44,11 @@ namespace CapaDatos
                 }
             }
 
-            return TipoInspeccion.IdTipoInspeccion;
+            return MetodoPago.IdMetodoPago;
         }
 
 
-        public async Task Actualizar(TipoInspeccion TipoInspeccion)
+        public async Task Actualizar(MetodoPago MetodoPago)
         {
             var cmd = (SqlCommand)null;
             SqlConnection cnn = Conexion.Instancia.Conectar();
@@ -58,12 +57,11 @@ namespace CapaDatos
             {
                 try
                 {
-                    cmd = new SqlCommand("spTipoInspeccionActualizar", cnn, tran);
+                    cmd = new SqlCommand("spMetodoPagoActualizar", cnn, tran);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.Add(CreateParams.SmallInt("IdTipoInspeccion", TipoInspeccion.IdTipoInspeccion));
-                    cmd.Parameters.Add(CreateParams.NVarchar("Nombre", TipoInspeccion.Nombre, 50));
-                    cmd.Parameters.Add(CreateParams.Decimal("Precio", TipoInspeccion.Precio, 10, 2));
+                    cmd.Parameters.Add(CreateParams.SmallInt("IdMetodoPago", MetodoPago.IdMetodoPago));
+                    cmd.Parameters.Add(CreateParams.NVarchar("Nombre", MetodoPago.Nombre, 50));
 
                     cmd.ExecuteNonQuery();
                     tran.Commit();
@@ -81,7 +79,7 @@ namespace CapaDatos
         }
 
 
-        public async Task Deshabilitar(short idTipoInspeccion)
+        public async Task Deshabilitar(short idMetodoPago)
         {
             var cmd = (SqlCommand)null;
             SqlConnection cnn = Conexion.Instancia.Conectar();
@@ -90,10 +88,10 @@ namespace CapaDatos
             { 
                 try
                 {
-                    cmd = new SqlCommand("spTipoInspeccionDeshabilitar", cnn, tran);
+                    cmd = new SqlCommand("spMetodoPagoDeshabilitar", cnn, tran);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.Add(CreateParams.SmallInt("IdTipoInspeccion", idTipoInspeccion));
+                    cmd.Parameters.Add(CreateParams.SmallInt("IdMetodoPago", idMetodoPago));
 
                     cmd.ExecuteNonQuery(); 
                     
@@ -111,23 +109,23 @@ namespace CapaDatos
             }
         }
 
-        public async Task<TipoInspeccion> BuscarPorIdTipoInspeccion(short idTipoInspeccion)
+        public async Task<MetodoPago> BuscarPorIdMetodoPago(short idMetodoPago)
         {
             var cmd = (SqlCommand)null;
-            var TipoInspeccion = (TipoInspeccion)null;
+            var MetodoPago = (MetodoPago)null;
             try
             {
                 SqlConnection cnn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("spTipoInspeccionBuscarPorIdTipoInspeccion", cnn);
+                cmd = new SqlCommand("spMetodoPagoBuscarPorIdMetodoPago", cnn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.Add(CreateParams.SmallInt("IdTipoInspeccion", idTipoInspeccion));
+                cmd.Parameters.Add(CreateParams.SmallInt("IdMetodoPago", idMetodoPago));
                 await cnn.OpenAsync();
 
                 SqlDataReader dr = await cmd.ExecuteReaderAsync();
                 while (await dr.ReadAsync())
                 {
-                    TipoInspeccion = ReadEntidad(dr);
+                    MetodoPago = ReadEntidad(dr);
                 }
                 dr.Close();
             }
@@ -141,17 +139,17 @@ namespace CapaDatos
                 cmd.Dispose();
             }
 
-            return TipoInspeccion;
+            return MetodoPago;
         }
 
-        public async Task<List<TipoInspeccion>> ListarActivos()
+        public async Task<List<MetodoPago>> ListarActivos()
         {
             var cmd = (SqlCommand)null;
-            var listaTipoInspeccions = new List<TipoInspeccion>();
+            var listaMetodoPagos = new List<MetodoPago>();
             try
             {
                 SqlConnection cnn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("spTipoInspeccionListarActivos", cnn);
+                cmd = new SqlCommand("spMetodoPagoListarActivos", cnn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 await cnn.OpenAsync();
@@ -159,8 +157,8 @@ namespace CapaDatos
                 SqlDataReader dr = await cmd.ExecuteReaderAsync();
                 while (await dr.ReadAsync())
                 {
-                    var TipoInspeccion = ReadEntidad(dr);
-                    listaTipoInspeccions.Add(TipoInspeccion);
+                    var MetodoPago = ReadEntidad(dr);
+                    listaMetodoPagos.Add(MetodoPago);
                 }
                 dr.Close();
             }
@@ -174,17 +172,17 @@ namespace CapaDatos
                 cmd.Dispose();
             }
 
-            return listaTipoInspeccions;
+            return listaMetodoPagos;
         }
 
-        public async Task<List<TipoInspeccion>> ListarTodos()
+        public async Task<List<MetodoPago>> ListarTodos()
         {
             var cmd = (SqlCommand)null;
-            var listaTipoInspeccions = new List<TipoInspeccion>();
+            var listaMetodoPagos = new List<MetodoPago>();
             try
             {
                 SqlConnection cnn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("spTipoInspeccionListarTodos", cnn);
+                cmd = new SqlCommand("spMetodoPagoListarTodos", cnn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 await cnn.OpenAsync();
@@ -192,8 +190,8 @@ namespace CapaDatos
                 SqlDataReader dr = await cmd.ExecuteReaderAsync();
                 while (await dr.ReadAsync())
                 {
-                    var TipoInspeccion = ReadEntidad(dr);
-                    listaTipoInspeccions.Add(TipoInspeccion);
+                    var MetodoPago = ReadEntidad(dr);
+                    listaMetodoPagos.Add(MetodoPago);
                 }
                 dr.Close();
             }
@@ -207,17 +205,16 @@ namespace CapaDatos
                 cmd.Dispose();
             }
 
-            return listaTipoInspeccions;
+            return listaMetodoPagos;
         }
 
-        private TipoInspeccion ReadEntidad(SqlDataReader dr)
+        private MetodoPago ReadEntidad(SqlDataReader dr)
         {
             try
             {
-                var obj = new TipoInspeccion();
-                obj.IdTipoInspeccion = Convert.ToInt16(dr["IdTipoInspeccion"]);
+                var obj = new MetodoPago();
+                obj.IdMetodoPago = Convert.ToInt16(dr["IdMetodoPago"]);
                 obj.Nombre = Convert.ToString(dr["Nombre"]);
-                obj.Precio = Convert.ToDecimal(dr["Precio"]);
                 obj.Activo = Convert.ToBoolean(dr["Activo"]);
 
                 return obj;

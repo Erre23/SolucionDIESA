@@ -73,7 +73,7 @@
             this.GbDatos.Controls.Add(this.LbNombre);
             this.GbDatos.Location = new System.Drawing.Point(12, 47);
             this.GbDatos.Name = "GbDatos";
-            this.GbDatos.Size = new System.Drawing.Size(536, 177);
+            this.GbDatos.Size = new System.Drawing.Size(536, 166);
             this.GbDatos.TabIndex = 1;
             this.GbDatos.TabStop = false;
             this.GbDatos.Text = "Datos del Tipo de Documento de Identidad";
@@ -82,9 +82,9 @@
             // 
             this.ChkPersonaJuridica.AutoSize = true;
             this.ChkPersonaJuridica.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ChkPersonaJuridica.Location = new System.Drawing.Point(283, 136);
+            this.ChkPersonaJuridica.Location = new System.Drawing.Point(308, 136);
             this.ChkPersonaJuridica.Name = "ChkPersonaJuridica";
-            this.ChkPersonaJuridica.Size = new System.Drawing.Size(163, 25);
+            this.ChkPersonaJuridica.Size = new System.Drawing.Size(134, 21);
             this.ChkPersonaJuridica.TabIndex = 17;
             this.ChkPersonaJuridica.Text = "Persona Jurídica :";
             this.ChkPersonaJuridica.UseVisualStyleBackColor = true;
@@ -93,9 +93,9 @@
             // 
             this.ChkAlfanumerico.AutoSize = true;
             this.ChkAlfanumerico.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ChkAlfanumerico.Location = new System.Drawing.Point(30, 136);
+            this.ChkAlfanumerico.Location = new System.Drawing.Point(32, 136);
             this.ChkAlfanumerico.Name = "ChkAlfanumerico";
-            this.ChkAlfanumerico.Size = new System.Drawing.Size(140, 25);
+            this.ChkAlfanumerico.Size = new System.Drawing.Size(114, 21);
             this.ChkAlfanumerico.TabIndex = 16;
             this.ChkAlfanumerico.Text = "Alfanumérico :";
             this.ChkAlfanumerico.UseVisualStyleBackColor = true;
@@ -106,7 +106,7 @@
             this.ChkLongitudExacta.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.ChkLongitudExacta.Location = new System.Drawing.Point(18, 65);
             this.ChkLongitudExacta.Name = "ChkLongitudExacta";
-            this.ChkLongitudExacta.Size = new System.Drawing.Size(152, 25);
+            this.ChkLongitudExacta.Size = new System.Drawing.Size(128, 21);
             this.ChkLongitudExacta.TabIndex = 15;
             this.ChkLongitudExacta.Text = "Logitud Exacta :";
             this.ChkLongitudExacta.UseVisualStyleBackColor = true;
@@ -117,34 +117,34 @@
             this.TbLongitudMaxima.Location = new System.Drawing.Point(428, 98);
             this.TbLongitudMaxima.MaxLength = 2;
             this.TbLongitudMaxima.Name = "TbLongitudMaxima";
-            this.TbLongitudMaxima.Size = new System.Drawing.Size(93, 28);
+            this.TbLongitudMaxima.Size = new System.Drawing.Size(93, 24);
             this.TbLongitudMaxima.TabIndex = 11;
             this.TbLongitudMaxima.TipoCaracteres = CapaPresentacion.Controls.CustomTextBox.TipoInput.SoloNumeros;
             // 
             // TbLongitudMinima
             // 
-            this.TbLongitudMinima.Location = new System.Drawing.Point(153, 98);
+            this.TbLongitudMinima.Location = new System.Drawing.Point(132, 98);
             this.TbLongitudMinima.MaxLength = 2;
             this.TbLongitudMinima.Name = "TbLongitudMinima";
-            this.TbLongitudMinima.Size = new System.Drawing.Size(93, 28);
+            this.TbLongitudMinima.Size = new System.Drawing.Size(93, 24);
             this.TbLongitudMinima.TabIndex = 9;
             this.TbLongitudMinima.TipoCaracteres = CapaPresentacion.Controls.CustomTextBox.TipoInput.SoloNumeros;
             this.TbLongitudMinima.TextChanged += new System.EventHandler(this.TbLongitudMinima_TextChanged);
             // 
             // TbNombre
             // 
-            this.TbNombre.Location = new System.Drawing.Point(153, 27);
+            this.TbNombre.Location = new System.Drawing.Point(132, 27);
             this.TbNombre.MaxLength = 50;
             this.TbNombre.Name = "TbNombre";
-            this.TbNombre.Size = new System.Drawing.Size(368, 28);
+            this.TbNombre.Size = new System.Drawing.Size(389, 24);
             this.TbNombre.TabIndex = 7;
             // 
             // LbLongitudMaxima
             // 
             this.LbLongitudMaxima.AutoSize = true;
-            this.LbLongitudMaxima.Location = new System.Drawing.Point(300, 101);
+            this.LbLongitudMaxima.Location = new System.Drawing.Point(320, 101);
             this.LbLongitudMaxima.Name = "LbLongitudMaxima";
-            this.LbLongitudMaxima.Size = new System.Drawing.Size(124, 21);
+            this.LbLongitudMaxima.Size = new System.Drawing.Size(104, 17);
             this.LbLongitudMaxima.TabIndex = 10;
             this.LbLongitudMaxima.Text = "Longitud Máx. :";
             // 
@@ -153,16 +153,16 @@
             this.LbLongitudMinima.AutoSize = true;
             this.LbLongitudMinima.Location = new System.Drawing.Point(33, 101);
             this.LbLongitudMinima.Name = "LbLongitudMinima";
-            this.LbLongitudMinima.Size = new System.Drawing.Size(115, 21);
+            this.LbLongitudMinima.Size = new System.Drawing.Size(95, 17);
             this.LbLongitudMinima.TabIndex = 8;
             this.LbLongitudMinima.Text = "Longitud Mín :";
             // 
             // LbNombre
             // 
             this.LbNombre.AutoSize = true;
-            this.LbNombre.Location = new System.Drawing.Point(69, 30);
+            this.LbNombre.Location = new System.Drawing.Point(62, 30);
             this.LbNombre.Name = "LbNombre";
-            this.LbNombre.Size = new System.Drawing.Size(79, 21);
+            this.LbNombre.Size = new System.Drawing.Size(66, 17);
             this.LbNombre.TabIndex = 6;
             this.LbNombre.Text = "Nombre :";
             // 
@@ -284,7 +284,7 @@
             this.LbOpcion.BackColor = System.Drawing.SystemColors.Highlight;
             this.LbOpcion.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LbOpcion.ForeColor = System.Drawing.Color.White;
-            this.LbOpcion.Location = new System.Drawing.Point(12, 232);
+            this.LbOpcion.Location = new System.Drawing.Point(12, 228);
             this.LbOpcion.Name = "LbOpcion";
             this.LbOpcion.Size = new System.Drawing.Size(246, 30);
             this.LbOpcion.TabIndex = 2;
@@ -294,7 +294,7 @@
             // BnGuardar
             // 
             this.BnGuardar.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BnGuardar.Location = new System.Drawing.Point(321, 230);
+            this.BnGuardar.Location = new System.Drawing.Point(321, 226);
             this.BnGuardar.Name = "BnGuardar";
             this.BnGuardar.Size = new System.Drawing.Size(110, 35);
             this.BnGuardar.TabIndex = 3;
@@ -305,7 +305,7 @@
             // BnCancelar
             // 
             this.BnCancelar.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BnCancelar.Location = new System.Drawing.Point(440, 230);
+            this.BnCancelar.Location = new System.Drawing.Point(440, 226);
             this.BnCancelar.Name = "BnCancelar";
             this.BnCancelar.Size = new System.Drawing.Size(110, 35);
             this.BnCancelar.TabIndex = 4;
@@ -363,7 +363,7 @@
             // 
             // FrmTipoDocumentoIdentidad
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 703);
             this.Controls.Add(this.BnSalir);

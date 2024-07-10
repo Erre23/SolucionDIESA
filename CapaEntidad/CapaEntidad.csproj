@@ -50,10 +50,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cliente.cs" />
+    <Compile Include="Custom\TallerHorarioDisponible.cs" />
     <Compile Include="Departamento.cs" />
     <Compile Include="Distrito.cs" />
-    <Compile Include="EntInspector.cs" />
-    <Compile Include="EntTipoInspeccion.cs" />
+    <Compile Include="Inspector.cs" />
+    <Compile Include="MetodoPago.cs" />
+    <Compile Include="TipoInspeccion.cs" />
+    <Compile Include="ProgramacionInspeccion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Provincia.cs" />
     <Compile Include="Taller.cs" />

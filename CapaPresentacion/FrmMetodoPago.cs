@@ -5,10 +5,10 @@ using System.Windows.Forms;
 
 namespace CapaPresentacion
 {
-    public partial class FrmTipoInspeccion : Form
+    public partial class FrmMetodoPago : Form
     {
         ToolStripMenuItem _menu;
-        public FrmTipoInspeccion(ToolStripMenuItem menu)
+        public FrmMetodoPago(ToolStripMenuItem menu)
         {
             _menu = menu;
             _menu.Enabled = false;
@@ -16,18 +16,18 @@ namespace CapaPresentacion
             SetAccion(FormAccion.ninguno);
         }
 
-        private async void FrmTipoInspeccion_Load(object sender, EventArgs e)
+        private async void FrmMetodoPago_Load(object sender, EventArgs e)
         {
             try
             {
-                DgvTipoInspeccion.Rows.Clear();
+                DgvMetodoPago.Rows.Clear();
                 this.Cursor = Cursors.WaitCursor;
 
-                var lista = await LogTipoInspeccion.Instancia.TipoInspeccionListarTodos();
+                var lista = await LogMetodoPago.Instancia.MetodoPagoListarTodos();
 
                 foreach (var item in lista)
                 {
-                    DgvTipoInspeccion_Agregar(item);
+                    DgvMetodoPago_Agregar(item);
                 }
 
                 this.Cursor = Cursors.Default;
@@ -39,7 +39,7 @@ namespace CapaPresentacion
             }
         }
 
-        private void FrmTipoInspeccion_FormClosing(object sender, FormClosingEventArgs e)
+        private void FrmMetodoPago_FormClosing(object sender, FormClosingEventArgs e)
         {
             if ((this.Accion == FormAccion.nuevo || this.Accion == FormAccion.editar) && 
                 MessageBox.Show(this, "¿Está seguro de cerrar esta ventana? los datos que no han sido guardados se perderán", "Un momento", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
@@ -50,28 +50,26 @@ namespace CapaPresentacion
 
         #region Métodos
 
-        private void DgvTipoInspeccion_Agregar(TipoInspeccion TipoInspeccion)
+        private void DgvMetodoPago_Agregar(MetodoPago MetodoPago)
         {
             var indice = 
-                DgvTipoInspeccion.Rows.Add(
-                    TipoInspeccion.Nombre, 
-                    TipoInspeccion.Precio.ToString("S/ #0.00"), 
-                    TipoInspeccion.Activo ? "SI" : ""
+                DgvMetodoPago.Rows.Add(
+                    MetodoPago.Nombre, 
+                    MetodoPago.Activo ? "SI" : ""
                 );
-            DgvTipoInspeccion.Rows[indice].Tag = TipoInspeccion;
+            DgvMetodoPago.Rows[indice].Tag = MetodoPago;
         }
 
-        private void DgvTipoInspeccion_Actualizar(TipoInspeccion TipoInspeccion)
+        private void DgvMetodoPago_Actualizar(MetodoPago MetodoPago)
         {
 
-            DgvTipoInspeccion.CurrentRow.Tag = TipoInspeccion;
-            DgvTipoInspeccion.CurrentRow.Cells[0].Value = TipoInspeccion.Nombre;
-            DgvTipoInspeccion.CurrentRow.Cells[1].Value = TipoInspeccion.Precio.ToString("S/ #0.00");
-            DgvTipoInspeccion.CurrentRow.Cells[2].Value = TipoInspeccion.Activo ? "SI" : "";
+            DgvMetodoPago.CurrentRow.Tag = MetodoPago;
+            DgvMetodoPago.CurrentRow.Cells[0].Value = MetodoPago.Nombre;
+            DgvMetodoPago.CurrentRow.Cells[1].Value = MetodoPago.Activo ? "SI" : "";
         }
 
         private FormAccion Accion;
-        private TipoInspeccion CurrentTipoInspeccion;
+        private MetodoPago CurrentMetodoPago;
 
         public void Botones_Enabled(bool nuevo, bool editar, bool deshabilitar)
         {
@@ -89,21 +87,19 @@ namespace CapaPresentacion
         public void GBDatos_Limpiar()
         {   
             TbNombre.Clear();
-            TbPrecio.Clear();
         }
-        private void GbDatos_MostrarDatos(TipoInspeccion TipoInspeccion)
+        private void GbDatos_MostrarDatos(MetodoPago MetodoPago)
         {
-            this.CurrentTipoInspeccion = TipoInspeccion;
+            this.CurrentMetodoPago = MetodoPago;
             
-            TbNombre.Text = TipoInspeccion.Nombre;
-            TbPrecio.Text = TipoInspeccion.Precio.ToString();
+            TbNombre.Text = MetodoPago.Nombre;
         }
 
         public void SetAccion(FormAccion accion)
         {
             GBDatos_Limpiar();
             this.Accion = accion;
-            this.CurrentTipoInspeccion = null;
+            this.CurrentMetodoPago = null;
             switch(this.Accion)
             {
                 case FormAccion.ninguno:
@@ -139,27 +135,27 @@ namespace CapaPresentacion
 
         private void BnEditar_Click(object sender, EventArgs e)
         {
-            var TipoInspeccion = (TipoInspeccion)DgvTipoInspeccion.CurrentRow?.Tag;
-            if (TipoInspeccion == null)
+            var MetodoPago = (MetodoPago)DgvMetodoPago.CurrentRow?.Tag;
+            if (MetodoPago == null)
             {
                 MessageBox.Show(this, "Olvidó seleccionar un tipo de inspección", "Un momento por favor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
             SetAccion(FormAccion.editar);
-            GbDatos_MostrarDatos(TipoInspeccion);
+            GbDatos_MostrarDatos(MetodoPago);
         }
 
         private async void BnDeshabilitar_Click(object sender, EventArgs e)
         {
-            var TipoInspeccion = (TipoInspeccion)DgvTipoInspeccion.CurrentRow?.Tag;
-            if (TipoInspeccion == null)
+            var MetodoPago = (MetodoPago)DgvMetodoPago.CurrentRow?.Tag;
+            if (MetodoPago == null)
             {
                 MessageBox.Show(this, "Olvidó seleccionar un tipo de inspección", "Un momento por favor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
             string datos = "\n";
-            datos += "\n\r - Nombre: " + TipoInspeccion.Nombre;
+            datos += "\n\r - Nombre: " + MetodoPago.Nombre;
 
             if (MessageBox.Show(this, "¿Está seguro de deshabilitar al tipo de inspección?" + datos, "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
@@ -170,9 +166,9 @@ namespace CapaPresentacion
             {
                 BnDeshabilitar.Enabled = false;
                 this.Cursor = Cursors.WaitCursor;
-                await LogTipoInspeccion.Instancia.TipoInspeccionDeshabilitar(TipoInspeccion.IdTipoInspeccion);
-                TipoInspeccion.Activo = false;
-                DgvTipoInspeccion_Actualizar(TipoInspeccion);
+                await LogMetodoPago.Instancia.MetodoPagoDeshabilitar(MetodoPago.IdMetodoPago);
+                MetodoPago.Activo = false;
+                DgvMetodoPago_Actualizar(MetodoPago);
 
 
                 this.Cursor = Cursors.Default;
@@ -196,7 +192,6 @@ namespace CapaPresentacion
                 var datosFaltantes = "";
                
                 if (TbNombre.Text.Trim() == "") datosFaltantes += "\n\r - Nombre";
-                if (TbPrecio.Text.Trim() == "") datosFaltantes += "\n\r - Precio";
 
                 if (!string.IsNullOrEmpty(datosFaltantes))
                 {
@@ -205,9 +200,8 @@ namespace CapaPresentacion
                 }
 
                 
-                if (this.Accion == FormAccion.nuevo) this.CurrentTipoInspeccion = new TipoInspeccion();
-                this.CurrentTipoInspeccion.Nombre = TbNombre.Text.Trim();
-                this.CurrentTipoInspeccion.Precio = Convert.ToDecimal(TbPrecio.Text.Trim());
+                if (this.Accion == FormAccion.nuevo) this.CurrentMetodoPago = new MetodoPago();
+                this.CurrentMetodoPago.Nombre = TbNombre.Text.Trim();
 
                 if (MessageBox.Show(this, "¿Está seguro guardar los datos?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 {
@@ -220,13 +214,13 @@ namespace CapaPresentacion
 
                 if (this.Accion == FormAccion.nuevo)
                 {
-                    this.CurrentTipoInspeccion.IdTipoInspeccion = await LogTipoInspeccion.Instancia.TipoInspeccionInsertar(this.CurrentTipoInspeccion);
-                    DgvTipoInspeccion_Agregar(this.CurrentTipoInspeccion);
+                    this.CurrentMetodoPago.IdMetodoPago = await LogMetodoPago.Instancia.MetodoPagoInsertar(this.CurrentMetodoPago);
+                    DgvMetodoPago_Agregar(this.CurrentMetodoPago);
                 }
                 else
                 {
-                    await LogTipoInspeccion.Instancia.TipoInspeccionActualizar(this.CurrentTipoInspeccion);
-                    DgvTipoInspeccion_Actualizar(this.CurrentTipoInspeccion);
+                    await LogMetodoPago.Instancia.MetodoPagoActualizar(this.CurrentMetodoPago);
+                    DgvMetodoPago_Actualizar(this.CurrentMetodoPago);
                 }
 
                 
@@ -254,7 +248,7 @@ namespace CapaPresentacion
             this.Close();
         }
 
-        private void FrmTipoInspeccion_FormClosed(object sender, FormClosedEventArgs e)
+        private void FrmMetodoPago_FormClosed(object sender, FormClosedEventArgs e)
         {
             this._menu.Enabled = true;
         }

@@ -69,7 +69,7 @@ namespace CapaPresentacion
 
         private void mnuProgramarInspeccion_Click(object sender, EventArgs e)
         {
-            var form = new FrmProgramacionInspeccion();
+            var form = new FrmProgramacionInspeccion((ToolStripMenuItem)sender);
             form.MdiParent = this;
             form.Show();
         }
@@ -97,30 +97,23 @@ namespace CapaPresentacion
 
         private void inspectorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (formInspector == null || formInspector.IsDisposed)
-            {
-                formInspector = new Frm_Inspector();
-                formInspector.MdiParent = this;
-                formInspector.Show();
-            }
-            else
-            {
-                formInspector.Activate();
-            }
+            var form = new FrmInspector((ToolStripMenuItem)sender);
+            form.MdiParent = this;
+            form.Show();
         }
 
         private void tipoDeInspeccionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (formTipoInspeccion == null || formTipoInspeccion.IsDisposed)
-            {
-                formTipoInspeccion = new FrmTipoInspeccion();
-                formTipoInspeccion.MdiParent = this;
-                formTipoInspeccion.Show();
-            }
-            else
-            {
-                formTipoInspeccion.Activate();
-            }
+            var form = new FrmTipoInspeccion((ToolStripMenuItem)sender);
+            form.MdiParent = this;
+            form.Show();
+        }
+
+        private void metodoPagoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new FrmMetodoPago((ToolStripMenuItem)sender);
+            form.MdiParent = this;
+            form.Show();
         }
     }
 }

@@ -42,6 +42,7 @@
             this.CmbDistrito = new System.Windows.Forms.ComboBox();
             this.CmbProvincia = new System.Windows.Forms.ComboBox();
             this.LbProvincia = new System.Windows.Forms.Label();
+            this.TbNombre = new CapaPresentacion.Controls.CustomTextBox();
             this.LbDias = new System.Windows.Forms.Label();
             this.TbDireccion = new System.Windows.Forms.TextBox();
             this.CmbDepartamento = new System.Windows.Forms.ComboBox();
@@ -53,16 +54,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.GbLista = new System.Windows.Forms.GroupBox();
             this.DgvTaller = new System.Windows.Forms.DataGridView();
-            this.LbOpcion = new System.Windows.Forms.Label();
-            this.BnGuardar = new System.Windows.Forms.Button();
-            this.BnCancelar = new System.Windows.Forms.Button();
-            this.BnNuevo = new System.Windows.Forms.Button();
-            this.BnEditar = new System.Windows.Forms.Button();
-            this.BnDeshabilitar = new System.Windows.Forms.Button();
-            this.BnBuscar = new System.Windows.Forms.Button();
-            this.BnSalir = new System.Windows.Forms.Button();
-            this.BnFiltrar = new System.Windows.Forms.Button();
-            this.TbNombre = new CapaPresentacion.Controls.CustomTextBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,6 +69,15 @@
             this.Column14 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Column15 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LbOpcion = new System.Windows.Forms.Label();
+            this.BnGuardar = new System.Windows.Forms.Button();
+            this.BnCancelar = new System.Windows.Forms.Button();
+            this.BnNuevo = new System.Windows.Forms.Button();
+            this.BnEditar = new System.Windows.Forms.Button();
+            this.BnDeshabilitar = new System.Windows.Forms.Button();
+            this.BnBuscar = new System.Windows.Forms.Button();
+            this.BnSalir = new System.Windows.Forms.Button();
+            this.BnFiltrar = new System.Windows.Forms.Button();
             this.GbDatos.SuspendLayout();
             this.GbLista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvTaller)).BeginInit();
@@ -119,7 +119,7 @@
             this.ChkDomingo.AutoSize = true;
             this.ChkDomingo.Location = new System.Drawing.Point(832, 173);
             this.ChkDomingo.Name = "ChkDomingo";
-            this.ChkDomingo.Size = new System.Drawing.Size(98, 25);
+            this.ChkDomingo.Size = new System.Drawing.Size(83, 21);
             this.ChkDomingo.TabIndex = 21;
             this.ChkDomingo.Text = "Domingo";
             this.ChkDomingo.UseVisualStyleBackColor = true;
@@ -129,7 +129,7 @@
             this.ChkSabado.AutoSize = true;
             this.ChkSabado.Location = new System.Drawing.Point(716, 173);
             this.ChkSabado.Name = "ChkSabado";
-            this.ChkSabado.Size = new System.Drawing.Size(86, 25);
+            this.ChkSabado.Size = new System.Drawing.Size(73, 21);
             this.ChkSabado.TabIndex = 20;
             this.ChkSabado.Text = "Sábado";
             this.ChkSabado.UseVisualStyleBackColor = true;
@@ -139,7 +139,7 @@
             this.ChkViernes.AutoSize = true;
             this.ChkViernes.Location = new System.Drawing.Point(599, 173);
             this.ChkViernes.Name = "ChkViernes";
-            this.ChkViernes.Size = new System.Drawing.Size(87, 25);
+            this.ChkViernes.Size = new System.Drawing.Size(70, 21);
             this.ChkViernes.TabIndex = 19;
             this.ChkViernes.Text = "Viernes";
             this.ChkViernes.UseVisualStyleBackColor = true;
@@ -149,7 +149,7 @@
             this.ChkJueves.AutoSize = true;
             this.ChkJueves.Location = new System.Drawing.Point(487, 173);
             this.ChkJueves.Name = "ChkJueves";
-            this.ChkJueves.Size = new System.Drawing.Size(82, 25);
+            this.ChkJueves.Size = new System.Drawing.Size(69, 21);
             this.ChkJueves.TabIndex = 18;
             this.ChkJueves.Text = "Jueves";
             this.ChkJueves.UseVisualStyleBackColor = true;
@@ -159,7 +159,7 @@
             this.ChkMiercoles.AutoSize = true;
             this.ChkMiercoles.Location = new System.Drawing.Point(355, 173);
             this.ChkMiercoles.Name = "ChkMiercoles";
-            this.ChkMiercoles.Size = new System.Drawing.Size(102, 25);
+            this.ChkMiercoles.Size = new System.Drawing.Size(81, 21);
             this.ChkMiercoles.TabIndex = 17;
             this.ChkMiercoles.Text = "Miércoles";
             this.ChkMiercoles.UseVisualStyleBackColor = true;
@@ -169,7 +169,7 @@
             this.ChkMartes.AutoSize = true;
             this.ChkMartes.Location = new System.Drawing.Point(242, 173);
             this.ChkMartes.Name = "ChkMartes";
-            this.ChkMartes.Size = new System.Drawing.Size(83, 25);
+            this.ChkMartes.Size = new System.Drawing.Size(67, 21);
             this.ChkMartes.TabIndex = 16;
             this.ChkMartes.Text = "Martes";
             this.ChkMartes.UseVisualStyleBackColor = true;
@@ -179,7 +179,7 @@
             this.ChkLunes.AutoSize = true;
             this.ChkLunes.Location = new System.Drawing.Point(137, 173);
             this.ChkLunes.Name = "ChkLunes";
-            this.ChkLunes.Size = new System.Drawing.Size(75, 25);
+            this.ChkLunes.Size = new System.Drawing.Size(63, 21);
             this.ChkLunes.TabIndex = 15;
             this.ChkLunes.Text = "Lunes";
             this.ChkLunes.UseVisualStyleBackColor = true;
@@ -190,7 +190,8 @@
             this.DtpHoraFin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DtpHoraFin.Location = new System.Drawing.Point(419, 133);
             this.DtpHoraFin.Name = "DtpHoraFin";
-            this.DtpHoraFin.Size = new System.Drawing.Size(185, 28);
+            this.DtpHoraFin.ShowUpDown = true;
+            this.DtpHoraFin.Size = new System.Drawing.Size(185, 24);
             this.DtpHoraFin.TabIndex = 13;
             // 
             // DtpHoraInicio
@@ -199,15 +200,16 @@
             this.DtpHoraInicio.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DtpHoraInicio.Location = new System.Drawing.Point(137, 133);
             this.DtpHoraInicio.Name = "DtpHoraInicio";
-            this.DtpHoraInicio.Size = new System.Drawing.Size(185, 28);
+            this.DtpHoraInicio.ShowUpDown = true;
+            this.DtpHoraInicio.Size = new System.Drawing.Size(185, 24);
             this.DtpHoraInicio.TabIndex = 11;
             // 
             // LbDistrito
             // 
             this.LbDistrito.AutoSize = true;
-            this.LbDistrito.Location = new System.Drawing.Point(615, 99);
+            this.LbDistrito.Location = new System.Drawing.Point(621, 99);
             this.LbDistrito.Name = "LbDistrito";
-            this.LbDistrito.Size = new System.Drawing.Size(76, 21);
+            this.LbDistrito.Size = new System.Drawing.Size(60, 17);
             this.LbDistrito.TabIndex = 8;
             this.LbDistrito.Text = "Distrito :";
             // 
@@ -217,7 +219,7 @@
             this.CmbDistrito.FormattingEnabled = true;
             this.CmbDistrito.Location = new System.Drawing.Point(694, 95);
             this.CmbDistrito.Name = "CmbDistrito";
-            this.CmbDistrito.Size = new System.Drawing.Size(258, 29);
+            this.CmbDistrito.Size = new System.Drawing.Size(258, 25);
             this.CmbDistrito.TabIndex = 9;
             // 
             // CmbProvincia
@@ -226,25 +228,33 @@
             this.CmbProvincia.FormattingEnabled = true;
             this.CmbProvincia.Location = new System.Drawing.Point(419, 95);
             this.CmbProvincia.Name = "CmbProvincia";
-            this.CmbProvincia.Size = new System.Drawing.Size(185, 29);
+            this.CmbProvincia.Size = new System.Drawing.Size(185, 25);
             this.CmbProvincia.TabIndex = 7;
             this.CmbProvincia.SelectedIndexChanged += new System.EventHandler(this.CmbProvincia_SelectedIndexChanged);
             // 
             // LbProvincia
             // 
             this.LbProvincia.AutoSize = true;
-            this.LbProvincia.Location = new System.Drawing.Point(329, 99);
+            this.LbProvincia.Location = new System.Drawing.Point(334, 99);
             this.LbProvincia.Name = "LbProvincia";
-            this.LbProvincia.Size = new System.Drawing.Size(87, 21);
+            this.LbProvincia.Size = new System.Drawing.Size(72, 17);
             this.LbProvincia.TabIndex = 6;
             this.LbProvincia.Text = "Provincia :";
+            // 
+            // TbNombre
+            // 
+            this.TbNombre.Location = new System.Drawing.Point(137, 27);
+            this.TbNombre.Name = "TbNombre";
+            this.TbNombre.Size = new System.Drawing.Size(467, 24);
+            this.TbNombre.TabIndex = 1;
+            this.TbNombre.TipoCaracteres = CapaPresentacion.Controls.CustomTextBox.TipoInput.Todo;
             // 
             // LbDias
             // 
             this.LbDias.AutoSize = true;
             this.LbDias.Location = new System.Drawing.Point(80, 173);
             this.LbDias.Name = "LbDias";
-            this.LbDias.Size = new System.Drawing.Size(54, 21);
+            this.LbDias.Size = new System.Drawing.Size(42, 17);
             this.LbDias.TabIndex = 14;
             this.LbDias.Text = "Días :";
             // 
@@ -253,7 +263,7 @@
             this.TbDireccion.Location = new System.Drawing.Point(137, 61);
             this.TbDireccion.MaxLength = 100;
             this.TbDireccion.Name = "TbDireccion";
-            this.TbDireccion.Size = new System.Drawing.Size(815, 28);
+            this.TbDireccion.Size = new System.Drawing.Size(815, 24);
             this.TbDireccion.TabIndex = 3;
             // 
             // CmbDepartamento
@@ -262,52 +272,52 @@
             this.CmbDepartamento.FormattingEnabled = true;
             this.CmbDepartamento.Location = new System.Drawing.Point(137, 95);
             this.CmbDepartamento.Name = "CmbDepartamento";
-            this.CmbDepartamento.Size = new System.Drawing.Size(185, 29);
+            this.CmbDepartamento.Size = new System.Drawing.Size(185, 25);
             this.CmbDepartamento.TabIndex = 5;
             this.CmbDepartamento.SelectedIndexChanged += new System.EventHandler(this.CmbDepartamento_SelectedIndexChanged);
             // 
             // LbHoraFin
             // 
             this.LbHoraFin.AutoSize = true;
-            this.LbHoraFin.Location = new System.Drawing.Point(333, 136);
+            this.LbHoraFin.Location = new System.Drawing.Point(339, 136);
             this.LbHoraFin.Name = "LbHoraFin";
-            this.LbHoraFin.Size = new System.Drawing.Size(83, 21);
+            this.LbHoraFin.Size = new System.Drawing.Size(67, 17);
             this.LbHoraFin.TabIndex = 12;
             this.LbHoraFin.Text = "Hora Fin :";
             // 
             // LbHoraInicio
             // 
             this.LbHoraInicio.AutoSize = true;
-            this.LbHoraInicio.Location = new System.Drawing.Point(33, 136);
+            this.LbHoraInicio.Location = new System.Drawing.Point(41, 136);
             this.LbHoraInicio.Name = "LbHoraInicio";
-            this.LbHoraInicio.Size = new System.Drawing.Size(101, 21);
+            this.LbHoraInicio.Size = new System.Drawing.Size(81, 17);
             this.LbHoraInicio.TabIndex = 10;
             this.LbHoraInicio.Text = "Hora Inicio :";
             // 
             // LbNombres
             // 
             this.LbNombres.AutoSize = true;
-            this.LbNombres.Location = new System.Drawing.Point(44, 64);
+            this.LbNombres.Location = new System.Drawing.Point(49, 64);
             this.LbNombres.Name = "LbNombres";
-            this.LbNombres.Size = new System.Drawing.Size(90, 21);
+            this.LbNombres.Size = new System.Drawing.Size(73, 17);
             this.LbNombres.TabIndex = 2;
             this.LbNombres.Text = "Dirección :";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(55, 30);
+            this.label3.Location = new System.Drawing.Point(56, 30);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 21);
+            this.label3.Size = new System.Drawing.Size(66, 17);
             this.label3.TabIndex = 0;
             this.label3.Text = "Nombre :";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 99);
+            this.label2.Location = new System.Drawing.Point(16, 99);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(128, 21);
+            this.label2.Size = new System.Drawing.Size(106, 17);
             this.label2.TabIndex = 4;
             this.label2.Text = "Departamento :";
             // 
@@ -370,119 +380,6 @@
             this.DgvTaller.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvTaller.Size = new System.Drawing.Size(935, 304);
             this.DgvTaller.TabIndex = 0;
-            // 
-            // LbOpcion
-            // 
-            this.LbOpcion.BackColor = System.Drawing.SystemColors.Highlight;
-            this.LbOpcion.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LbOpcion.ForeColor = System.Drawing.Color.White;
-            this.LbOpcion.Location = new System.Drawing.Point(12, 266);
-            this.LbOpcion.Name = "LbOpcion";
-            this.LbOpcion.Size = new System.Drawing.Size(381, 30);
-            this.LbOpcion.TabIndex = 2;
-            this.LbOpcion.Text = "OPCIÓN : NUEVO / EDITAR / BUSCAR";
-            this.LbOpcion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // BnGuardar
-            // 
-            this.BnGuardar.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BnGuardar.Location = new System.Drawing.Point(743, 264);
-            this.BnGuardar.Name = "BnGuardar";
-            this.BnGuardar.Size = new System.Drawing.Size(110, 35);
-            this.BnGuardar.TabIndex = 3;
-            this.BnGuardar.Text = "Guardar";
-            this.BnGuardar.UseVisualStyleBackColor = true;
-            this.BnGuardar.Click += new System.EventHandler(this.BnGuardar_Click);
-            // 
-            // BnCancelar
-            // 
-            this.BnCancelar.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BnCancelar.Location = new System.Drawing.Point(862, 264);
-            this.BnCancelar.Name = "BnCancelar";
-            this.BnCancelar.Size = new System.Drawing.Size(110, 35);
-            this.BnCancelar.TabIndex = 4;
-            this.BnCancelar.Text = "Cancelar";
-            this.BnCancelar.UseVisualStyleBackColor = true;
-            this.BnCancelar.Click += new System.EventHandler(this.BnCancelar_Click);
-            // 
-            // BnNuevo
-            // 
-            this.BnNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.BnNuevo.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BnNuevo.Location = new System.Drawing.Point(12, 656);
-            this.BnNuevo.Name = "BnNuevo";
-            this.BnNuevo.Size = new System.Drawing.Size(110, 35);
-            this.BnNuevo.TabIndex = 7;
-            this.BnNuevo.Text = "Nuevo";
-            this.BnNuevo.UseVisualStyleBackColor = true;
-            this.BnNuevo.Click += new System.EventHandler(this.BnNuevo_Click);
-            // 
-            // BnEditar
-            // 
-            this.BnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.BnEditar.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BnEditar.Location = new System.Drawing.Point(128, 656);
-            this.BnEditar.Name = "BnEditar";
-            this.BnEditar.Size = new System.Drawing.Size(110, 35);
-            this.BnEditar.TabIndex = 8;
-            this.BnEditar.Text = "Editar";
-            this.BnEditar.UseVisualStyleBackColor = true;
-            this.BnEditar.Click += new System.EventHandler(this.BnEditar_Click);
-            // 
-            // BnDeshabilitar
-            // 
-            this.BnDeshabilitar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.BnDeshabilitar.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BnDeshabilitar.Location = new System.Drawing.Point(244, 656);
-            this.BnDeshabilitar.Name = "BnDeshabilitar";
-            this.BnDeshabilitar.Size = new System.Drawing.Size(137, 35);
-            this.BnDeshabilitar.TabIndex = 9;
-            this.BnDeshabilitar.Text = "Deshabilitar";
-            this.BnDeshabilitar.UseVisualStyleBackColor = true;
-            this.BnDeshabilitar.Click += new System.EventHandler(this.BnDeshabilitar_Click);
-            // 
-            // BnBuscar
-            // 
-            this.BnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.BnBuscar.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BnBuscar.Location = new System.Drawing.Point(387, 656);
-            this.BnBuscar.Name = "BnBuscar";
-            this.BnBuscar.Size = new System.Drawing.Size(110, 35);
-            this.BnBuscar.TabIndex = 10;
-            this.BnBuscar.Text = "Buscar";
-            this.BnBuscar.UseVisualStyleBackColor = true;
-            this.BnBuscar.Click += new System.EventHandler(this.BnBuscar_Click);
-            // 
-            // BnSalir
-            // 
-            this.BnSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BnSalir.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BnSalir.Location = new System.Drawing.Point(860, 656);
-            this.BnSalir.Name = "BnSalir";
-            this.BnSalir.Size = new System.Drawing.Size(110, 35);
-            this.BnSalir.TabIndex = 11;
-            this.BnSalir.Text = "Salir";
-            this.BnSalir.UseVisualStyleBackColor = true;
-            this.BnSalir.Click += new System.EventHandler(this.BnSalir_Click);
-            // 
-            // BnFiltrar
-            // 
-            this.BnFiltrar.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BnFiltrar.Location = new System.Drawing.Point(862, 264);
-            this.BnFiltrar.Name = "BnFiltrar";
-            this.BnFiltrar.Size = new System.Drawing.Size(110, 35);
-            this.BnFiltrar.TabIndex = 4;
-            this.BnFiltrar.Text = "Filtrar";
-            this.BnFiltrar.UseVisualStyleBackColor = true;
-            this.BnFiltrar.Click += new System.EventHandler(this.BnFiltrar_Click);
-            // 
-            // TbNombre
-            // 
-            this.TbNombre.Location = new System.Drawing.Point(137, 27);
-            this.TbNombre.Name = "TbNombre";
-            this.TbNombre.Size = new System.Drawing.Size(500, 28);
-            this.TbNombre.TabIndex = 1;
-            this.TbNombre.TipoCaracteres = CapaPresentacion.Controls.CustomTextBox.TipoInput.Todo;
             // 
             // Column1
             // 
@@ -607,9 +504,114 @@
             this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Column6.Width = 70;
             // 
+            // LbOpcion
+            // 
+            this.LbOpcion.BackColor = System.Drawing.SystemColors.Highlight;
+            this.LbOpcion.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LbOpcion.ForeColor = System.Drawing.Color.White;
+            this.LbOpcion.Location = new System.Drawing.Point(12, 266);
+            this.LbOpcion.Name = "LbOpcion";
+            this.LbOpcion.Size = new System.Drawing.Size(381, 30);
+            this.LbOpcion.TabIndex = 2;
+            this.LbOpcion.Text = "OPCIÓN : NUEVO / EDITAR / BUSCAR";
+            this.LbOpcion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // BnGuardar
+            // 
+            this.BnGuardar.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BnGuardar.Location = new System.Drawing.Point(743, 264);
+            this.BnGuardar.Name = "BnGuardar";
+            this.BnGuardar.Size = new System.Drawing.Size(110, 35);
+            this.BnGuardar.TabIndex = 3;
+            this.BnGuardar.Text = "Guardar";
+            this.BnGuardar.UseVisualStyleBackColor = true;
+            this.BnGuardar.Click += new System.EventHandler(this.BnGuardar_Click);
+            // 
+            // BnCancelar
+            // 
+            this.BnCancelar.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BnCancelar.Location = new System.Drawing.Point(862, 264);
+            this.BnCancelar.Name = "BnCancelar";
+            this.BnCancelar.Size = new System.Drawing.Size(110, 35);
+            this.BnCancelar.TabIndex = 4;
+            this.BnCancelar.Text = "Cancelar";
+            this.BnCancelar.UseVisualStyleBackColor = true;
+            this.BnCancelar.Click += new System.EventHandler(this.BnCancelar_Click);
+            // 
+            // BnNuevo
+            // 
+            this.BnNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BnNuevo.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BnNuevo.Location = new System.Drawing.Point(12, 656);
+            this.BnNuevo.Name = "BnNuevo";
+            this.BnNuevo.Size = new System.Drawing.Size(110, 35);
+            this.BnNuevo.TabIndex = 7;
+            this.BnNuevo.Text = "Nuevo";
+            this.BnNuevo.UseVisualStyleBackColor = true;
+            this.BnNuevo.Click += new System.EventHandler(this.BnNuevo_Click);
+            // 
+            // BnEditar
+            // 
+            this.BnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BnEditar.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BnEditar.Location = new System.Drawing.Point(128, 656);
+            this.BnEditar.Name = "BnEditar";
+            this.BnEditar.Size = new System.Drawing.Size(110, 35);
+            this.BnEditar.TabIndex = 8;
+            this.BnEditar.Text = "Editar";
+            this.BnEditar.UseVisualStyleBackColor = true;
+            this.BnEditar.Click += new System.EventHandler(this.BnEditar_Click);
+            // 
+            // BnDeshabilitar
+            // 
+            this.BnDeshabilitar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BnDeshabilitar.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BnDeshabilitar.Location = new System.Drawing.Point(244, 656);
+            this.BnDeshabilitar.Name = "BnDeshabilitar";
+            this.BnDeshabilitar.Size = new System.Drawing.Size(137, 35);
+            this.BnDeshabilitar.TabIndex = 9;
+            this.BnDeshabilitar.Text = "Deshabilitar";
+            this.BnDeshabilitar.UseVisualStyleBackColor = true;
+            this.BnDeshabilitar.Click += new System.EventHandler(this.BnDeshabilitar_Click);
+            // 
+            // BnBuscar
+            // 
+            this.BnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BnBuscar.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BnBuscar.Location = new System.Drawing.Point(387, 656);
+            this.BnBuscar.Name = "BnBuscar";
+            this.BnBuscar.Size = new System.Drawing.Size(110, 35);
+            this.BnBuscar.TabIndex = 10;
+            this.BnBuscar.Text = "Buscar";
+            this.BnBuscar.UseVisualStyleBackColor = true;
+            this.BnBuscar.Click += new System.EventHandler(this.BnBuscar_Click);
+            // 
+            // BnSalir
+            // 
+            this.BnSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BnSalir.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BnSalir.Location = new System.Drawing.Point(860, 656);
+            this.BnSalir.Name = "BnSalir";
+            this.BnSalir.Size = new System.Drawing.Size(110, 35);
+            this.BnSalir.TabIndex = 11;
+            this.BnSalir.Text = "Salir";
+            this.BnSalir.UseVisualStyleBackColor = true;
+            this.BnSalir.Click += new System.EventHandler(this.BnSalir_Click);
+            // 
+            // BnFiltrar
+            // 
+            this.BnFiltrar.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BnFiltrar.Location = new System.Drawing.Point(862, 264);
+            this.BnFiltrar.Name = "BnFiltrar";
+            this.BnFiltrar.Size = new System.Drawing.Size(110, 35);
+            this.BnFiltrar.TabIndex = 4;
+            this.BnFiltrar.Text = "Filtrar";
+            this.BnFiltrar.UseVisualStyleBackColor = true;
+            this.BnFiltrar.Click += new System.EventHandler(this.BnFiltrar_Click);
+            // 
             // FrmTaller
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 703);
             this.Controls.Add(this.BnFiltrar);

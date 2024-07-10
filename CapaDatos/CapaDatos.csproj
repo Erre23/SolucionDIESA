@@ -52,13 +52,15 @@
     <Compile Include="Conexion.cs" />
     <Compile Include="CreateParams.cs" />
     <Compile Include="DaoInspector.cs" />
+    <Compile Include="DaoProgramacionInspeccion.cs" />
+    <Compile Include="DaoMetodoPago.cs" />
+    <Compile Include="DaoTipoInspeccion.cs" />
     <Compile Include="DaoTaller.cs" />
     <Compile Include="DaoDepartamento.cs" />
     <Compile Include="DaoProvincia.cs" />
     <Compile Include="DaoDistrito.cs" />
     <Compile Include="DaoCliente.cs" />
     <Compile Include="DaoTipoDocumentoIdentidad.cs" />
-    <Compile Include="DaoTipoInspeccion.cs" />
     <Compile Include="DaoUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

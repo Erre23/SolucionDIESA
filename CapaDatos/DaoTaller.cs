@@ -132,7 +132,7 @@ namespace CapaDatos
             }
         }
 
-        public async Task<Taller> BuscarPorIdTaller(int idTaller)
+        public async Task<Taller> BuscarPorIdTaller(short idTaller)
         {
             var cmd = (SqlCommand)null;
             var Taller = (Taller)null;
@@ -142,7 +142,7 @@ namespace CapaDatos
                 cmd = new SqlCommand("spTallerBuscarPorIdTaller", cnn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.Add(CreateParams.Int("IdTaller", idTaller));
+                cmd.Parameters.Add(CreateParams.SmallInt("IdTaller", idTaller));
                 await cnn.OpenAsync();
 
                 SqlDataReader dr = await cmd.ExecuteReaderAsync();
@@ -202,6 +202,39 @@ namespace CapaDatos
             return listaTallers;
         }
 
+        public async Task<List<Taller>> ListarActivos()
+        {
+            var cmd = (SqlCommand)null;
+            var listaTallers = new List<Taller>();
+            try
+            {
+                SqlConnection cnn = Conexion.Instancia.Conectar();
+                cmd = new SqlCommand("spTallerListarActivos", cnn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                await cnn.OpenAsync();
+
+                SqlDataReader dr = await cmd.ExecuteReaderAsync();
+                while (await dr.ReadAsync())
+                {
+                    var Taller = ReadEntidad(dr);
+                    listaTallers.Add(Taller);
+                }
+                dr.Close();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                cmd.Connection.Close();
+                cmd.Dispose();
+            }
+
+            return listaTallers;
+        }
+
         public async Task<List<Taller>> BuscarDisponiblesPorFecha(DateTime Fecha)
         {
             var cmd = (SqlCommand)null;
@@ -236,7 +269,7 @@ namespace CapaDatos
             return listaTallers;
         }
 
-        private Taller ReadEntidad(SqlDataReader dr, bool traerContraseña = false)
+        private Taller ReadEntidad(SqlDataReader dr)
         {
             try
             {

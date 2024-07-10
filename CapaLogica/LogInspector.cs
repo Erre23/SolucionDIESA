@@ -26,31 +26,83 @@ namespace CapaLogica
         #endregion singleton
 
         #region metodos
-        public List<EntInspector> ListarInspector()
+        public async Task<int> InspectorInsertar(Inspector Inspector)
         {
-            return DaoInspector.Instancia.ListarInspector();
+            return await DaoInspector.Instancia.Insertar(Inspector);
         }
-        public void InsertarInspector(EntInspector Ins)
+
+        public async Task InspectorActualizar(Inspector Inspector)
         {
-            DaoInspector.Instancia.InsertarInspector(Ins);
+            await DaoInspector.Instancia.Actualizar(Inspector);
         }
-        public void EditarInspector(EntInspector Ins)
+
+        public async Task InspectorDeshabilitar(int idInspector)
         {
-            DaoInspector.Instancia.EditarInspector(Ins);
+            await DaoInspector.Instancia.Deshabilitar(idInspector);
         }
-        public void InhabilitaInspector(EntInspector Ins)
+
+        public async Task<Inspector> InspectorBuscarPorIdInspector(int idInspector)
         {
-            DaoInspector.Instancia.InhabilitarInspector(Ins);
+            return await DaoInspector.Instancia.BuscarPorIdInspector(idInspector);
         }
-        public List<EntInspector> BuscaInspector(EntInspector Ins)
+
+        public async Task<Inspector> InspectorBuscarPorDocumentoIdentidad(short idTipoDocumentoIdentidad, string numeroDocumentoIdentidad)
         {
-           return DaoInspector.Instancia.BuscarInspector(Ins);
+            return await DaoInspector.Instancia.BuscarPorDocumentoIdentidad(idTipoDocumentoIdentidad, numeroDocumentoIdentidad);
+        }
+
+        public async Task<List<Inspector>> InspectorBuscarDisponiblesPorFechaHora(DateTime fecha, DateTime hora)
+        {
+            var listaInspectores = await DaoInspector.Instancia.ListarActivos();
+
+            var programacionesInspeccion = await DaoProgramacionInspeccion.Instancia.BuscarPorTallerFecha(0, fecha.Date);
+            programacionesInspeccion = programacionesInspeccion.FindAll(x => x.InspeccionHora.Hour == hora.Hour);
+            programacionesInspeccion.RemoveAll(x => x.Anulado);
+
+            listaInspectores.RemoveAll(x => programacionesInspeccion.Any(p => p.IdInspector == x.IdInspector));
+
+            if (listaInspectores.Count > 0)
+            {
+                var tiposDocumentoIdentidad = await DaoTipoDocumentoIdentidad.Instancia.ListarTodos();
+                foreach (var Inspector in listaInspectores)
+                {
+                    Inspector.TipoDocumentoIdentidad = tiposDocumentoIdentidad.Find(x => x.IdTipoDocumentoIdentidad == Inspector.IdTipoDocumentoIdentidad);
+                }
+            }
+
+            return listaInspectores;
+        }
+
+        public async Task<List<Inspector>> InspectorBusquedaGeneral(short? idTipoDocumentoIdentidad, string numeroDocumentoIdentidad, string nombres, string apellido1, string apellido2)
+        {
+            var listaInspectores = await DaoInspector.Instancia.BusquedaGeneral(idTipoDocumentoIdentidad, numeroDocumentoIdentidad, nombres, apellido1, apellido2);
+            if (listaInspectores.Count > 0)
+            {
+                var tiposDocumentoIdentidad = await DaoTipoDocumentoIdentidad.Instancia.ListarTodos();
+                foreach (var Inspector in listaInspectores)
+                {
+                    Inspector.TipoDocumentoIdentidad = tiposDocumentoIdentidad.Find(x => x.IdTipoDocumentoIdentidad == Inspector.IdTipoDocumentoIdentidad);
+                }
+            }
+
+            return listaInspectores;
+        }
+
+        public async Task<List<Inspector>> InspectorListarActivos()
+        {
+            var listaInspectores = await DaoInspector.Instancia.ListarActivos();
+            if (listaInspectores.Count > 0)
+            {
+                var tiposDocumentoIdentidad = await DaoTipoDocumentoIdentidad.Instancia.ListarTodos();
+                foreach (var Inspector in listaInspectores)
+                {
+                    Inspector.TipoDocumentoIdentidad = tiposDocumentoIdentidad.Find(x => x.IdTipoDocumentoIdentidad == Inspector.IdTipoDocumentoIdentidad);
+                }
+            }
+
+            return listaInspectores;
         }
 
         #endregion metodos
-
-
-
-
     }
 }

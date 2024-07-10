@@ -50,23 +50,47 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="FormAccion.cs" />
-    <Compile Include="FrmClienteModal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmClienteModal.Designer.cs">
-      <DependentUpon>FrmClienteModal.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmInspector.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmInspector.Designer.cs">
       <DependentUpon>FrmInspector.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmClienteModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmClienteModal.Designer.cs">
+      <DependentUpon>FrmClienteModal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProgramacionInspeccionBuscarPorNumero.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProgramacionInspeccionBuscarPorNumero.Designer.cs">
+      <DependentUpon>FrmProgramacionInspeccionBuscarPorNumero.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProgramacionInspeccionBuscarDisponibilidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProgramacionInspeccionBuscarDisponibilidad.Designer.cs">
+      <DependentUpon>FrmProgramacionInspeccionBuscarDisponibilidad.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmTaller.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmTaller.Designer.cs">
       <DependentUpon>FrmTaller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMetodoPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMetodoPago.Designer.cs">
+      <DependentUpon>FrmMetodoPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTipoInspeccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTipoInspeccion.Designer.cs">
+      <DependentUpon>FrmTipoInspeccion.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmTipoDocumentoIdentidad.cs">
       <SubType>Form</SubType>
@@ -116,22 +140,28 @@
     <Compile Include="FrmMenu.Designer.cs">
       <DependentUpon>FrmMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmTipoInspeccion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmTipoInspeccion.Designer.cs">
-      <DependentUpon>FrmTipoInspeccion.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FrmClienteModal.resx">
-      <DependentUpon>FrmClienteModal.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmInspector.resx">
       <DependentUpon>FrmInspector.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmClienteModal.resx">
+      <DependentUpon>FrmClienteModal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProgramacionInspeccionBuscarPorNumero.resx">
+      <DependentUpon>FrmProgramacionInspeccionBuscarPorNumero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProgramacionInspeccionBuscarDisponibilidad.resx">
+      <DependentUpon>FrmProgramacionInspeccionBuscarDisponibilidad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmTaller.resx">
       <DependentUpon>FrmTaller.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMetodoPago.resx">
+      <DependentUpon>FrmMetodoPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTipoInspeccion.resx">
+      <DependentUpon>FrmTipoInspeccion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTipoDocumentoIdentidad.resx">
       <DependentUpon>FrmTipoDocumentoIdentidad.cs</DependentUpon>
@@ -156,9 +186,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMenu.resx">
       <DependentUpon>FrmMenu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmTipoInspeccion.resx">
-      <DependentUpon>FrmTipoInspeccion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

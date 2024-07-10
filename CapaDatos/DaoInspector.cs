@@ -1,11 +1,9 @@
 ﻿using CapaEntidad;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
-using System.Data;
 
 namespace CapaDatos
 {
@@ -16,34 +14,132 @@ namespace CapaDatos
         public static DaoInspector Instancia { get { return _instancia; } }
         #endregion singleton
 
-        public List<EntInspector> ListarInspector()
+        #region métodos
+        public async Task<int> Insertar(Inspector Inspector)
         {
-            SqlCommand cmd = null;
-            List<EntInspector> lista = new List<EntInspector>();
-            try
-            {
-                SqlConnection cn = Conexion.Instancia.Conectar(); //singleton
-                cmd = new SqlCommand("spListarInspector", cn);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cn.Open();
-                SqlDataReader dr = cmd.ExecuteReader();
-                while (dr.Read())
+            var cmd = (SqlCommand)null;
+            SqlConnection cnn = Conexion.Instancia.Conectar();
+            await cnn.OpenAsync();
+            using (var tran = cnn.BeginTransaction())
+            { 
+                try
                 {
-                    EntInspector Cli = new EntInspector();
-                    Cli.NumeroEmpleado = Convert.ToInt32(dr["NumeroEmpledo"]);
-                    Cli.Estado = dr["Estado"].ToString();
-                    Cli.TipoDocumento = dr["TipoDocumento"].ToString();
-                    Cli.NumeroDocumentoIdentidad = Convert.ToInt32(dr["NumeroDocumento"]);
-                    Cli.Nombres = dr["NombreCompleto"].ToString();
-                    Cli.Apellido1= dr["Apellido1"].ToString();
-                    Cli.Apellido2= dr["Apellido2"].ToString();
-                    Cli.Celular = Convert.ToInt32(dr["Celular"]);
-                    Cli.Email= dr["Email"].ToString();  
-                    Cli.RazonSocial = dr["razonSocial"].ToString();
+                    cmd = new SqlCommand("spInspectorInsertar", cnn, tran);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add(CreateParams.TinyInt("IdTipoDocumentoIdentidad", Inspector.IdTipoDocumentoIdentidad));
+                    cmd.Parameters.Add(CreateParams.NVarchar("NumeroDocumentoIdentidad", Inspector.NumeroDocumentoIdentidad, 20));
+                    cmd.Parameters.Add(CreateParams.NVarchar("Nombres", Inspector.Nombres, 100));
+                    cmd.Parameters.Add(CreateParams.NVarchar("Apellido1", Inspector.Apellido1, 50));
+                    cmd.Parameters.Add(CreateParams.NVarchar("Apellido2", Inspector.Apellido2, 50));
+                    cmd.Parameters.Add(CreateParams.NVarchar("Celular", Inspector.Celular, 50));
+                    cmd.Parameters.Add(CreateParams.NVarchar("Email", Inspector.Email, 100));
+
+                    Inspector.IdInspector = Convert.ToInt32(await cmd.ExecuteScalarAsync());
+
+                    tran.Commit();
+                    cmd.Connection.Close();
+                    cmd.Dispose();
+                }
+                catch (Exception e)
+                {
+                    tran.Rollback();
+                    cmd.Connection.Close();
+                    cmd.Dispose();
+                    throw e;
+                }
+            }
+
+            return Inspector.IdInspector;
+        }
+
+
+        public async Task Actualizar(Inspector Inspector)
+        {
+            var cmd = (SqlCommand)null;
+            SqlConnection cnn = Conexion.Instancia.Conectar();
+            await cnn.OpenAsync();
+            using (var tran = cnn.BeginTransaction())
+            {
+                try
+                {
+                    cmd = new SqlCommand("spInspectorActualizar", cnn, tran);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add(CreateParams.Int("IdInspector", Inspector.IdInspector));
+                    cmd.Parameters.Add(CreateParams.TinyInt("IdTipoDocumentoIdentidad", Inspector.IdTipoDocumentoIdentidad));
+                    cmd.Parameters.Add(CreateParams.NVarchar("NumeroDocumentoIdentidad", Inspector.NumeroDocumentoIdentidad, 20));
+                    cmd.Parameters.Add(CreateParams.NVarchar("Nombres", Inspector.Nombres, 100));
+                    cmd.Parameters.Add(CreateParams.NVarchar("Apellido1", Inspector.Apellido1, 50));
+                    cmd.Parameters.Add(CreateParams.NVarchar("Apellido2", Inspector.Apellido2, 50));
+                    cmd.Parameters.Add(CreateParams.NVarchar("Celular", Inspector.Celular, 50));
+                    cmd.Parameters.Add(CreateParams.NVarchar("Email", Inspector.Email, 100));
+
+                    cmd.ExecuteNonQuery();
+                    tran.Commit();
+                    cmd.Connection.Close();
+                    cmd.Dispose();
+                }
+                catch (Exception e)
+                {
+                    tran.Rollback();
+                    cmd.Connection.Close();
+                    cmd.Dispose();
+                    throw e;
+                }
+            }
+        }
+
+
+        public async Task Deshabilitar(int idInspector)
+        {
+            var cmd = (SqlCommand)null;
+            SqlConnection cnn = Conexion.Instancia.Conectar();
+            await cnn.OpenAsync();
+            using (var tran = cnn.BeginTransaction())
+            { 
+                try
+                {
+                    cmd = new SqlCommand("spInspectorDeshabilitar", cnn, tran);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add(CreateParams.Int("IdInspector", idInspector));
+
+                    cmd.ExecuteNonQuery(); 
                     
-                    lista.Add(Cli);
+                    tran.Commit();
+                    cmd.Connection.Close();
+                    cmd.Dispose();
                 }
-                
+                catch (Exception e)
+                {
+                    tran.Rollback();
+                    cmd.Connection.Close();
+                    cmd.Dispose();
+                    throw e;
+                }
+            }
+        }
+
+        public async Task<Inspector> BuscarPorIdInspector(int idInspector)
+        {
+            var cmd = (SqlCommand)null;
+            var Inspector = (Inspector)null;
+            try
+            {
+                SqlConnection cnn = Conexion.Instancia.Conectar();
+                cmd = new SqlCommand("spInspectorBuscarPorIdInspector", cnn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.Add(CreateParams.Int("IdInspector", idInspector));
+                await cnn.OpenAsync();
+
+                SqlDataReader dr = await cmd.ExecuteReaderAsync();
+                while (await dr.ReadAsync())
+                {
+                    Inspector = await ReadEntidad(dr);
+                }
+                dr.Close();
             }
             catch (Exception e)
             {
@@ -52,133 +148,32 @@ namespace CapaDatos
             finally
             {
                 cmd.Connection.Close();
+                cmd.Dispose();
             }
-            return lista;
+
+            return Inspector;
         }
 
-        public Boolean InsertarInspector(EntInspector Ins)
+        public async Task<Inspector> BuscarPorDocumentoIdentidad(short idTipoDocumentoIdentidad, string numeroDocumentoIdentidad)
         {
-            SqlCommand cmd = null;
-            Boolean inserta = false;
+            var cmd = (SqlCommand)null;
+            var Inspector = (Inspector)null;
             try
             {
-                SqlConnection cn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("spInsertarInspector", cn);
+                SqlConnection cnn = Conexion.Instancia.Conectar();
+                cmd = new SqlCommand("spInspectorBuscarPorDocumentoIdentidad", cnn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@Estado", Ins.Estado);
-                cmd.Parameters.AddWithValue("@TipoDocumento", Ins.TipoDocumento);
-                cmd.Parameters.AddWithValue("@NumeroDocumento", Ins.NumeroDocumentoIdentidad);
-                cmd.Parameters.AddWithValue("@NombreCompleto", Ins.Nombres);
-                cmd.Parameters.AddWithValue("@Apellido1", Ins.Apellido1);
-                cmd.Parameters.AddWithValue("@Apellido2", Ins.Apellido2);
-                cmd.Parameters.AddWithValue("@razonSocial", Ins.RazonSocial);
-                cmd.Parameters.AddWithValue("@Celular", Ins.Celular);
-                cmd.Parameters.AddWithValue("@Email", Ins.Email);
-                cn.Open();
-                int i = cmd.ExecuteNonQuery();
-                if (i > 0)
-                {
-                    inserta = true;
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-            finally { cmd.Connection.Close(); }
-            return inserta;
-        }
+                cmd.Parameters.Add(CreateParams.TinyInt("IdTipoDocumentoIdentidad", idTipoDocumentoIdentidad));
+                cmd.Parameters.Add(CreateParams.NVarchar("NumeroDocumentoIdentidad", numeroDocumentoIdentidad, 20));
+                await cnn.OpenAsync();
 
-        public Boolean EditarInspector(EntInspector Ins)
-        {
-            SqlCommand cmd = null;
-            Boolean edita = false;
-            try
-            {
-                SqlConnection cn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("spEditarInspector", cn);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@NumeroEmpledo",Ins.NumeroEmpleado);
-                cmd.Parameters.AddWithValue("@Estado", Ins.Estado);
-                cmd.Parameters.AddWithValue("@TipoDocumento", Ins.TipoDocumento);
-                cmd.Parameters.AddWithValue("@NumeroDocumento", Ins.NumeroDocumentoIdentidad);
-                cmd.Parameters.AddWithValue("@NombreCompleto", Ins.Nombres);
-                cmd.Parameters.AddWithValue("@Apellido1", Ins.Apellido1);
-                cmd.Parameters.AddWithValue("@Apellido2", Ins.Apellido2);
-                cmd.Parameters.AddWithValue("@razonSocial", Ins.RazonSocial);
-                cmd.Parameters.AddWithValue("@Celular", Ins.Celular);
-                cmd.Parameters.AddWithValue("@Email", Ins.Email);
-                cn.Open();
-                int i = cmd.ExecuteNonQuery();
-                if (i > 0)
+                SqlDataReader dr = await cmd.ExecuteReaderAsync();
+                while (await dr.ReadAsync())
                 {
-                    edita = true;
+                    Inspector = await ReadEntidad(dr);
                 }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-            finally { cmd.Connection.Close(); }
-            return edita;
-        }
-
-        public Boolean InhabilitarInspector(EntInspector Ins)
-        {
-            SqlCommand cmd = null;
-            Boolean delete = false;
-            try
-            {
-                SqlConnection cn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("spDeshabilitaInspector", cn);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@NumeroEmpledo", Ins.NumeroEmpleado);
-                //cmd.Parameters.AddWithValue("@Estado", Ins.Estado);
-                cn.Open();
-                int i = cmd.ExecuteNonQuery();
-                if (i > 0)
-                {
-                    delete = true;
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-            finally { cmd.Connection.Close(); }
-            return delete;
-
-        }
-        public List<EntInspector> BuscarInspector(EntInspector Ins)
-        {
-            SqlCommand cmd = null;
-            List<EntInspector> lista = new List<EntInspector>();
-            try
-            {
-                SqlConnection cn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("spBuscar", cn);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@NumeroEmpledo", Ins.NumeroEmpleado);
-                cn.Open();
-             
-                SqlDataReader dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-                    EntInspector Cli = new EntInspector();
-                    Cli.NumeroEmpleado = Convert.ToInt32(dr["NumeroEmpledo"]);
-                    Cli.Estado = dr["Estado"].ToString();
-                    Cli.TipoDocumento = dr["TipoDocumento"].ToString();
-                    Cli.NumeroDocumentoIdentidad = Convert.ToInt32(dr["NumeroDocumento"]);
-                    Cli.Nombres = dr["NombreCompleto"].ToString();
-                    Cli.Apellido1 = dr["Apellido1"].ToString();
-                    Cli.Apellido2 = dr["Apellido2"].ToString();
-                    Cli.Celular = Convert.ToInt32(dr["Celular"]);
-                    Cli.Email = dr["Email"].ToString();
-                    Cli.RazonSocial = dr["razonSocial"].ToString();
-
-                    lista.Add(Cli);
-                }
+                dr.Close();
             }
             catch (Exception e)
             {
@@ -187,11 +182,107 @@ namespace CapaDatos
             finally
             {
                 cmd.Connection.Close();
+                cmd.Dispose();
             }
-            return lista;
 
+            return Inspector;
         }
 
+        public async Task<List<Inspector>> BusquedaGeneral(short? idTipoDocumentoIdentidad, string numeroDocumentoIdentidad, string nombres, string apellido1, string apellido2)
+        {
+            var cmd = (SqlCommand)null;
+            var listaInspectors = new List<Inspector>();
+            try
+            {
+                SqlConnection cnn = Conexion.Instancia.Conectar();
+                cmd = new SqlCommand("spInspectorBusquedaGeneral", cnn);
+                cmd.CommandType = CommandType.StoredProcedure;
 
+                cmd.Parameters.Add(CreateParams.TinyInt("idTipoDocumentoIdentidad", idTipoDocumentoIdentidad));
+                cmd.Parameters.Add(CreateParams.NVarchar("numeroDocumentoIdentidad", numeroDocumentoIdentidad, 20));
+                cmd.Parameters.Add(CreateParams.NVarchar("Nombres", nombres, 100));
+                cmd.Parameters.Add(CreateParams.NVarchar("Apellido1", apellido1, 50));
+                cmd.Parameters.Add(CreateParams.NVarchar("Apellido2", apellido2, 50));
+                await cnn.OpenAsync();
+
+                SqlDataReader dr = await cmd.ExecuteReaderAsync();
+                while (await dr.ReadAsync())
+                {
+                    var Inspector = await ReadEntidad(dr);
+                    listaInspectors.Add(Inspector);
+                }
+                dr.Close();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                cmd.Connection.Close();
+                cmd.Dispose();
+            }
+
+            return listaInspectors;
+        }
+
+        public async Task<List<Inspector>> ListarActivos()
+        {
+            var cmd = (SqlCommand)null;
+            var listaInspectors = new List<Inspector>();
+            try
+            {
+                SqlConnection cnn = Conexion.Instancia.Conectar();
+                cmd = new SqlCommand("spInspectorListarActivos", cnn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                await cnn.OpenAsync();
+
+                SqlDataReader dr = await cmd.ExecuteReaderAsync();
+                while (await dr.ReadAsync())
+                {
+                    var Inspector = await ReadEntidad(dr);
+                    listaInspectors.Add(Inspector);
+                }
+                dr.Close();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                cmd.Connection.Close();
+                cmd.Dispose();
+            }
+
+            return listaInspectors;
+        }
+
+        private async Task<Inspector> ReadEntidad(SqlDataReader dr, bool traerContraseña = false)
+        {
+            try
+            {
+                var obj = new Inspector();
+                obj.IdInspector = Convert.ToInt32(dr["IdInspector"]);
+                obj.IdTipoDocumentoIdentidad = Convert.ToInt16(dr["IdTipoDocumentoIdentidad"]);
+                obj.NumeroDocumentoIdentidad = dr["NumeroDocumentoIdentidad"].ToString();
+                if (!(await dr.IsDBNullAsync(dr.GetOrdinal("Nombres")))) obj.Nombres = dr["Nombres"].ToString();
+                if (!(await dr.IsDBNullAsync(dr.GetOrdinal("Apellido1")))) obj.Apellido1 = dr["Apellido1"].ToString();
+                if (!(await dr.IsDBNullAsync(dr.GetOrdinal("Apellido2")))) obj.Apellido2 = dr["Apellido2"].ToString();
+                if (!(await dr.IsDBNullAsync(dr.GetOrdinal("Celular")))) obj.Celular = dr["Celular"].ToString();
+                if (!(await dr.IsDBNullAsync(dr.GetOrdinal("Email")))) obj.Email = dr["Email"].ToString();
+                obj.Activo = Convert.ToBoolean(dr["Activo"]);
+
+                return obj;
+
+            }
+            catch(Exception ex)
+            {
+                dr.Close();
+                throw ex;
+            }
+        }
+        #endregion métodos
     }
 }

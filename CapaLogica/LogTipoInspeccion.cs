@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CapaDatos;
 using CapaEntidad;
-using CapaDatos;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 namespace CapaLogica
 {
     public class LogTipoInspeccion
@@ -23,22 +20,27 @@ namespace CapaLogica
         #endregion singleton
 
         #region metodos
-        public List<EntTipoInspeccion> ListarTipoInspeccion()
+        public async Task<List<TipoInspeccion>> TipoInspeccionListarActivos()
         {
-            return DaoTipoInspeccion.Instancia.ListarTipoInspeccion();
+            return await DaoTipoInspeccion.Instancia.ListarActivos();
         }
 
-        public void InsertarTipoInspeccion(EntTipoInspeccion Ins)
+        public async Task<List<TipoInspeccion>> TipoInspeccionListarTodos()
         {
-            DaoTipoInspeccion.Instancia.InsertarTipoInspeccion(Ins);
+            return await DaoTipoInspeccion.Instancia.ListarTodos();
         }
-        public void EditarTipoInspeccion(EntTipoInspeccion Ins)
+
+        public async Task<short> TipoInspeccionInsertar(TipoInspeccion tipoInspeccion)
         {
-            DaoTipoInspeccion.Instancia.EditarTipoInspeccion(Ins);
+            return await DaoTipoInspeccion.Instancia.Insertar(tipoInspeccion);
         }
-        public void InhabilitaTipoInspeccion(EntTipoInspeccion Ins)
+        public async Task TipoInspeccionActualizar(TipoInspeccion tipoInspeccion)
         {
-            DaoTipoInspeccion.Instancia.InhabilitarTipoInspeccion(Ins);
+            await DaoTipoInspeccion.Instancia.Actualizar(tipoInspeccion);
+        }
+        public async Task TipoInspeccionDeshabilitar(short idTipoInspeccion)
+        {
+            await DaoTipoInspeccion.Instancia.Deshabilitar(idTipoInspeccion);
         }
        
         #endregion metodos

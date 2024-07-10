@@ -34,9 +34,9 @@
             this.mnuTaller = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTipoDocumentoIdentidad = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCliente = new System.Windows.Forms.ToolStripMenuItem();
+            this.tipoDeInspeccionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inspectorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.tipoDeInspeccionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.editMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProgramarInspeccion = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,6 +47,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.metodoPagoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -60,8 +61,8 @@
             this.viewMenu});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip.Size = new System.Drawing.Size(843, 28);
+            this.menuStrip.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip.Size = new System.Drawing.Size(632, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
@@ -73,57 +74,58 @@
             this.mnuCliente,
             this.tipoDeInspeccionToolStripMenuItem,
             this.inspectorToolStripMenuItem,
+            this.metodoPagoToolStripMenuItem,
             this.toolStripSeparator5,
             this.mnuExit});
             this.mnuMantenedor.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder;
             this.mnuMantenedor.Name = "mnuMantenedor";
-            this.mnuMantenedor.Size = new System.Drawing.Size(118, 24);
+            this.mnuMantenedor.Size = new System.Drawing.Size(95, 20);
             this.mnuMantenedor.Text = "Mantenedores";
             // 
             // mnuTaller
             // 
             this.mnuTaller.Name = "mnuTaller";
-            this.mnuTaller.Size = new System.Drawing.Size(314, 26);
+            this.mnuTaller.Size = new System.Drawing.Size(248, 22);
             this.mnuTaller.Text = "Taller";
             this.mnuTaller.Click += new System.EventHandler(this.mnuTaller_Click);
             // 
             // mnuTipoDocumentoIdentidad
             // 
             this.mnuTipoDocumentoIdentidad.Name = "mnuTipoDocumentoIdentidad";
-            this.mnuTipoDocumentoIdentidad.Size = new System.Drawing.Size(314, 26);
+            this.mnuTipoDocumentoIdentidad.Size = new System.Drawing.Size(248, 22);
             this.mnuTipoDocumentoIdentidad.Text = "Tipo de Documento de Identidad";
             this.mnuTipoDocumentoIdentidad.Click += new System.EventHandler(this.mnuTipoDocumentoIdentidad_Click);
             // 
             // mnuCliente
             // 
             this.mnuCliente.Name = "mnuCliente";
-            this.mnuCliente.Size = new System.Drawing.Size(314, 26);
+            this.mnuCliente.Size = new System.Drawing.Size(248, 22);
             this.mnuCliente.Text = "Cliente";
             this.mnuCliente.Click += new System.EventHandler(this.mnuCliente_Click);
+            // 
+            // tipoDeInspeccionToolStripMenuItem
+            // 
+            this.tipoDeInspeccionToolStripMenuItem.Name = "tipoDeInspeccionToolStripMenuItem";
+            this.tipoDeInspeccionToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.tipoDeInspeccionToolStripMenuItem.Text = "Tipo de Inspeccion";
+            this.tipoDeInspeccionToolStripMenuItem.Click += new System.EventHandler(this.tipoDeInspeccionToolStripMenuItem_Click);
             // 
             // inspectorToolStripMenuItem
             // 
             this.inspectorToolStripMenuItem.Name = "inspectorToolStripMenuItem";
-            this.inspectorToolStripMenuItem.Size = new System.Drawing.Size(314, 26);
+            this.inspectorToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
             this.inspectorToolStripMenuItem.Text = "Inspector";
             this.inspectorToolStripMenuItem.Click += new System.EventHandler(this.inspectorToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(311, 6);
-            // 
-            // tipoDeInspeccionToolStripMenuItem
-            // 
-            this.tipoDeInspeccionToolStripMenuItem.Name = "tipoDeInspeccionToolStripMenuItem";
-            this.tipoDeInspeccionToolStripMenuItem.Size = new System.Drawing.Size(314, 26);
-            this.tipoDeInspeccionToolStripMenuItem.Text = "Tipo de Inspeccion";
-            this.tipoDeInspeccionToolStripMenuItem.Click += new System.EventHandler(this.tipoDeInspeccionToolStripMenuItem_Click);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(245, 6);
             // 
             // mnuExit
             // 
             this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(314, 26);
+            this.mnuExit.Size = new System.Drawing.Size(248, 22);
             this.mnuExit.Text = "Exit";
             this.mnuExit.Click += new System.EventHandler(this.ExitToolsStripMenuItem_Click);
             // 
@@ -132,14 +134,13 @@
             this.editMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuProgramarInspeccion});
             this.editMenu.Name = "editMenu";
-            this.editMenu.Size = new System.Drawing.Size(109, 24);
+            this.editMenu.Size = new System.Drawing.Size(89, 20);
             this.editMenu.Text = "Movimientos";
             // 
             // mnuProgramarInspeccion
             // 
             this.mnuProgramarInspeccion.Name = "mnuProgramarInspeccion";
-            this.mnuProgramarInspeccion.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.mnuProgramarInspeccion.Size = new System.Drawing.Size(288, 26);
+            this.mnuProgramarInspeccion.Size = new System.Drawing.Size(190, 22);
             this.mnuProgramarInspeccion.Text = "Programar Inspección";
             this.mnuProgramarInspeccion.Click += new System.EventHandler(this.mnuProgramarInspeccion_Click);
             // 
@@ -150,27 +151,27 @@
             this.mnuConsultaProgramacionInspeccion,
             this.mnuConsultaInspeccion});
             this.viewMenu.Name = "viewMenu";
-            this.viewMenu.Size = new System.Drawing.Size(86, 24);
+            this.viewMenu.Size = new System.Drawing.Size(71, 20);
             this.viewMenu.Text = "Consultas";
             // 
             // mnuConsultaHorarioDIsponible
             // 
             this.mnuConsultaHorarioDIsponible.Name = "mnuConsultaHorarioDIsponible";
-            this.mnuConsultaHorarioDIsponible.Size = new System.Drawing.Size(416, 26);
+            this.mnuConsultaHorarioDIsponible.Size = new System.Drawing.Size(331, 22);
             this.mnuConsultaHorarioDIsponible.Text = "Consulta de horarios disponibles por taller";
             this.mnuConsultaHorarioDIsponible.Click += new System.EventHandler(this.mnuConsultaHorarioDisponible_Click);
             // 
             // mnuConsultaProgramacionInspeccion
             // 
             this.mnuConsultaProgramacionInspeccion.Name = "mnuConsultaProgramacionInspeccion";
-            this.mnuConsultaProgramacionInspeccion.Size = new System.Drawing.Size(416, 26);
+            this.mnuConsultaProgramacionInspeccion.Size = new System.Drawing.Size(331, 22);
             this.mnuConsultaProgramacionInspeccion.Text = "Consulta de inspecciones programadas por taller";
             this.mnuConsultaProgramacionInspeccion.Click += new System.EventHandler(this.mnuConsultaProgramacionInspeccion_Click);
             // 
             // mnuConsultaInspeccion
             // 
             this.mnuConsultaInspeccion.Name = "mnuConsultaInspeccion";
-            this.mnuConsultaInspeccion.Size = new System.Drawing.Size(416, 26);
+            this.mnuConsultaInspeccion.Size = new System.Drawing.Size(331, 22);
             this.mnuConsultaInspeccion.Text = "Consulta de inspecciones realizadas por taller";
             this.mnuConsultaInspeccion.Click += new System.EventHandler(this.mnuConsultaInspeccion_Click);
             // 
@@ -179,29 +180,34 @@
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 532);
+            this.statusStrip.Location = new System.Drawing.Point(0, 431);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip.Size = new System.Drawing.Size(843, 26);
+            this.statusStrip.Size = new System.Drawing.Size(632, 22);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
             // 
             // toolStripStatusLabel
             // 
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(49, 20);
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
+            // 
+            // metodoPagoToolStripMenuItem
+            // 
+            this.metodoPagoToolStripMenuItem.Name = "metodoPagoToolStripMenuItem";
+            this.metodoPagoToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.metodoPagoToolStripMenuItem.Text = "Método de Pago";
+            this.metodoPagoToolStripMenuItem.Click += new System.EventHandler(this.metodoPagoToolStripMenuItem_Click);
             // 
             // FrmMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(843, 558);
+            this.ClientSize = new System.Drawing.Size(632, 453);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Solución DIESA";
@@ -236,6 +242,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuTaller;
         private System.Windows.Forms.ToolStripMenuItem inspectorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tipoDeInspeccionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem metodoPagoToolStripMenuItem;
     }
 }
 
